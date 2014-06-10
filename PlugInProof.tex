@@ -1,0 +1,61 @@
+\documentclass[11pt]{article}
+\usepackage{graphicx}    % needed for including graphics e.g. EPS, PS
+\topmargin -1.5cm        % read Lamport p.163
+\oddsidemargin -0.04cm   % read Lamport p.163
+\evensidemargin -0.04cm  % same as oddsidemargin but for left-hand pages
+\textwidth 16.59cm
+\textheight 21.94cm 
+%\pagestyle{empty}       % Uncomment if don't want page numbers
+\parskip 7.2pt           % sets spacing between paragraphs
+%\renewcommand{\baselinestretch}{1.5} % Uncomment for 1.5 spacing between lines
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{verbatim}
+\parindent 0pt		 % sets leading space for paragraphs
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
+\author{Erik Waingarten \and Fermi Ma}
+\title{Plugging in Proof}
+
+
+\begin{document}         
+\maketitle
+
+The goal is to show that to minimize the number of 2-chains in $B_n/G$, we need to pick the largest level, then second largest, then third largest, ... etc. Which corresponds to theorem 1.2 in the Sperner's theorem and a problem of Erdos-Katona-Kleitman paper.
+
+The first step is to show proposition 2.1 holds. The proposition would say:
+
+\textbf{Proposition}: Let $\F$ be a family of $s$ elements of $B_n/G$, where $s$ is bigger than the middle level (some 2-chains would be included). If $A \in \F$ is of maximal cardinality, with $|A| = \dfrac{n}{2} + m$, then for any $B \subset A$ (in this case, subset corresponds to the $B_n/G$ definition of subset) with $|B| \geq \dfrac{n}{2} - m + 1$, we have $B \in \F$.
+
+So first of all, we want to have this proposition only looking at maximal cardinality to simplify things. In the $B_n$ case, we have that $B_n$ is symmetric, so that if $m < 0$, we could just flip all the sets by taking their complements? (i think this is right). Then if $B_n/G$ is symmetric we would do the same. Can we do the same? just take complements??? 
+
+\textit{Proof}: (with commentary) Suppose not. Then by the above comment, we say that $m\geq 1$ since if $0\leq m<1$, then we are all at the middle level, so there isn't any subset $B$. Let $l \leq 2m - 1$ be the minimal integer such that there exists a maximal cardinality set $A$ with a corresponding subset $l$ levels below that is not in $\F$. Then we let 
+\[ \A = \{ A \in \F | |A| = \dfrac{n}{2} + m, \partial^lA \not\subset \F \} \]
+\[ \B = \partial^lA - \F \]
+We construct the auxiliary bipartitie inclusion graph on $\A \cup \B$ with an edge $(A, B)$ if $B \subset A$. This corresponds to the pairs of points that make the proposition false. 
+
+Consider the case where we have a matching $M: \A \rightarrow \B$, this means an injective map. Where $M(A) \subset A$. What we want to do is shift all the elements from $\A$ into their corresponding matching in $\B$. We want to show that $\F$ was not minimal since this shifting around decreases the number of 2-chains. 
+
+Note that if $C \subset B$ is a newly introduced 2-chain for some $B \in \B$, then $C \subset B \subset A$, so we have lost a 2-chain as well. Therefore we only need to count the 2-chains added and removed in between the levels $\dfrac{n}{2} + m$ and $\dfrac{n}{2} + m - l$ (the corresponding levels of $\A$ and $\B$). 
+
+Suppose $l \geq 1$. By the minimality of the choice of $l$, all the shadows from $\A$ that are less than $l$ must be in $\F$. That is, $\partial^i\A \subset \F$ for $1 \leq i < l-1$. The number of intermediate chains in $\F$ that we lose is
+\[ \sum_{A \in \A} \sum_{i=1}^{l-1} |\partial^i A| \]
+
+Also, any sets in the new shifted $\F$ with cardinality $\frac{n}{2} + m$ must have all their shadows up to $l$ in $\F$, and these sets cannot be involved in any 2-chains with elements of $\B$. So we only gain 2-chains from the levels $\frac{n}{2}+m-1$ to $\frac{n}{2}+m-l$. The number of 2-chains that we gain is at most:
+\[ \sum_{A \in \A} \sum_{i=1}^{l-1} |U^i(M(A))| \]
+Where $U^i(B)$ is the set of supersets of $B$ with $i$ more elements $i$th.
+
+We want to show that \[ \sum_{A \in \A} \sum_{i=1}^{l-1} |U^i(M(A))| <  \sum_{A \in \A} \sum_{i=1}^{l-1} |\partial^i A| \] when $l \leq 2m-1$.
+
+This would reduce the problem to the case where $l=1$. So we have the missing subset one level below $A$. If there was another set $D \subset A$ where $|D| = |M(A)|$ but $D \in \F$. Then we lose the 2-chain $D \subset A$ and gain no other 2-chains. So we might as well assume that $\partial \A = \B$. 
+
+We now show that this means that the sets $A \in \A$ cannot be involved in any 2-chains in $\F$. Suppose that there existed a 2-chain with $C \subset A$, and $x \in C$. Then we shift $A$ to $A - \{ x \}$ which is in $\B$ (because $\partial A = B$). We also shift the remaining sets in $\A$ by an arbitrary matching from $\A - \{ A \}$ to $\B' = \partial A - \{ A - \{x\} \}$ - which apparently can be done by Hall's theorem ---- check this. 
+
+In the shifted set, we have lost the 2-chain $C \subset A$ and gained no intermediate 2-chains. So the shifted set has fewer. Therefoer, the sets in $\A$ cannot be part of any 2-chains. So the shifted set to $\partial \A$ will not be in any 2-chains. Since $|\F|$ is greater than the middle level, we know that there is some 2-chain, suppose it is $C \subset D$. So we can additionally shift $D$ to some element in $\partial \A$ that was not already shifted to. So we lose a 2-chain and not gain any. 
+
+In order to do that, we need to confirm that $|\partial \A| \geq |\A|$ for $m\geq 1$ -- which I think is not true!!! take the full cycle---. 
+
+so that means that there must not be a matching from $\A \rightarrow \B$. So there is a different shifting - done by a different lemma. ]
+We need to count the degrees and if the computation of the chains added and removed holds, then in the case of the partial matching, we only need to count the 2-chains added by the levels $\frac{n}{2}+m$ and $\frac{n}{2} + m - l$. Then using the lemma, we need to count the edges added and removed. 
+\end{document}
