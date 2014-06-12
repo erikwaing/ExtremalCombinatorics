@@ -26,7 +26,7 @@ The goal is to show that to minimize the number of 2-chains in $B_n/G$, we need 
 
 The first step is to show proposition 2.1 holds. The proposition would say:
 
-\textbf{Proposition}: Let $\F$ be a family of $s$ elements of $B_n/G$, where $s$ is bigger than the middle level (some 2-chains would be included). If $A \in \F$ is of maximal cardinality, with $|A| = \dfrac{n}{2} + m$, then for any $B \subset A$ (in this case, subset corresponds to the $B_n/G$ definition of subset) with $|B| \geq \dfrac{n}{2} - m + 1$, we have $B \in \F$.
+\textbf{Proposition}: There exists $\F$ a family of $s$ elements of $B_n/G$ that minimizes the number of 2-chains, where $s$ is bigger than the middle level (some 2-chains would be included) and if $A \in \F$ is of maximal cardinality, with $|A| = \dfrac{n}{2} + m$, then for any $B \subset A$ (in this case, subset corresponds to the $B_n/G$ definition of subset) with $|B| \geq \dfrac{n}{2} - m + 1$, $B \in \F$.
 
 So first of all, we want to show that it is sufficient to show this for when the maximal cardinality element is $\dfrac{n}{2} + m$ where $m\geq 1$. Suppose that we are dealing with $\F$ so that all elements $A \in \F$ are $|A| < \dfrac{n}{2} + 1$. Then since we have more elements than the middle level, there must be an element that is not in the middle level. Which means that there exists an element $B \in \F$ where $|B| < \dfrac{n}{2}$. In this case, lets make 
 \[ \F' = \{ \overline{A} | A \in \F \} \]
@@ -45,10 +45,10 @@ Suppose $l \geq 1$. By the minimality of the choice of $l$, all the shadows from
 \[ \sum_{A \in \A} \sum_{i=1}^{l-1} |\partial^i A| \]
 
 Also, any sets in the new shifted $\F$ with cardinality $\frac{n}{2} + m$ must have all their shadows up to $l$ in $\F$, and these sets cannot be involved in any 2-chains with elements of $\B$. So we only gain 2-chains from the levels $\frac{n}{2}+m-1$ to $\frac{n}{2}+m-l$. The number of 2-chains that we gain is at most:
-\[ \sum_{A \in \A} \sum_{i=1}^{l-1} |U^i(M(A))| \]
-Where $U^i(B)$ is the set of supersets of $B$ with $i$ more elements $i$th.
+\[ \sum_{A \in \A} \sum_{i=1}^{l-1} |U^i(M(A)) \cap \F| \]
+Where $U^i(B)$ is the set of supersets of $B$ with $i$ more elements.
 
-We want to show that \[ \sum_{A \in \A} \sum_{i=1}^{l-1} |U^i(M(A))| <  \sum_{A \in \A} \sum_{i=1}^{l-1} |\partial^i A| \] when $l \leq 2m-1$.
+We want to show that \[ \sum_{A \in \A} \sum_{i=1}^{l-1} |U^i(M(A)) \cap \F| \leq  \sum_{A \in \A} \sum_{i=1}^{l-1} |\partial^i A| \] when $l \leq 2m-1$.
 
 This would reduce the problem to the case where $l=1$. So we have the missing subset one level below $A$. If there was another set $D \subset A$ where $|D| = |M(A)|$ but $D \in \F$. Then we lose the 2-chain $D \subset A$ and gain no other 2-chains. So we might as well assume that $\partial \A = \B$. 
 
