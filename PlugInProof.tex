@@ -67,7 +67,8 @@ so that means that there must not be a matching from $\A \rightarrow \B$.
 
 \textbf{Lemma A.1.} Let $G$ be a bipartite graph on $U \cup V$ with minimum degree $\delta_U \geq 1$ in $U$ and maximum degree $\Delta_V$ in $V$. Suppose there is no matching from $U$ to $V$. Then there exist nonempty subsets $U_1 \subset U$ and $V_1 \subset V$ with a perfect matching $M: U_1 \to V_1$ and $e(U_1,V) + e(U \ U_1,V_1) \leq |U_1|\Delta_V$ (proof of this lemma is given on page 18 of the original paper).
 
+We can follow exactly what is done in the paper at this point, where we shift a nonzero number of elements in $\A$ to elements in $\B$. This works only if the inequality from the previous page:
+\[ \sum_{A \in \A} \sum_{i=1}^{l-1} |U^i(M(A)) \cap \F| \leq  \sum_{A \in \A} \sum_{i=1}^{l-1} |\partial^i A| \] 
+holds. Once we do this, we run through the entire proof again. If there is a matching, we are done, and if not, it goes through the lemma again. Eventually, this process will terminate and we will be done.
 
-
-We need to count the degrees and if the computation of the chains added and removed holds, then in the case of the partial matching, we only need to count the 2-chains added by the levels $\frac{n}{2}+m$ and $\frac{n}{2} + m - l$. Then using the lemma, we need to count the edges added and removed. 
 \end{document}
