@@ -28,7 +28,9 @@ The first step is to show proposition 2.1 holds. The proposition would say:
 
 \textbf{Proposition}: Let $\F$ be a family of $s$ elements of $B_n/G$, where $s$ is bigger than the middle level (some 2-chains would be included). If $A \in \F$ is of maximal cardinality, with $|A| = \dfrac{n}{2} + m$, then for any $B \subset A$ (in this case, subset corresponds to the $B_n/G$ definition of subset) with $|B| \geq \dfrac{n}{2} - m + 1$, we have $B \in \F$.
 
-So first of all, we want to have this proposition only looking at maximal cardinality to simplify things. In the $B_n$ case, we have that $B_n$ is symmetric, so that if $m < 0$, we could just flip all the sets by taking their complements? (i think this is right). Then if $B_n/G$ is symmetric we would do the same. Can we do the same? just take complements??? 
+So first of all, we want to show that it is sufficient to show this for when the maximal cardinality element is $\dfrac{n}{2} + m$ where $m\geq 1$. Suppose that we are dealing with $\F$ so that all elements $A \in \F$ are $|A| < \dfrac{n}{2} + 1$. Then since we have more elements than the middle level, there must be an element that is not in the middle level. Which means that there exists an element $B \in \F$ where $|B| < \dfrac{n}{2}$. In this case, lets make 
+\[ \F' = \{ \overline{A} | A \in \F \} \]
+So $|\F'| = |\F|$ and $C, D \in \F$ and $C \subset D \iff \overline{D} \subset \overline{C}$, so these have the same number of 2-chains. In this case, $\F'$ has an element $|\overline{B}| \geq \dfrac{n}{2} + 1$. 
 
 \textit{Proof}: (with commentary) Suppose not. Then by the above comment, we say that $m\geq 1$ since if $0\leq m<1$, then we are all at the middle level, so there isn't any subset $B$. Let $l \leq 2m - 1$ be the minimal integer such that there exists a maximal cardinality set $A$ with a corresponding subset $l$ levels below that is not in $\F$. Then we let 
 \[ \A = \{ A \in \F | |A| = \dfrac{n}{2} + m, \partial^lA \not\subset \F \} \]
