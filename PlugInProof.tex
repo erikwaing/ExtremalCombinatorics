@@ -16,21 +16,26 @@
 \newcommand{\A}{\mathcal{A}}
 \newcommand{\B}{\mathcal{B}}
 \author{Erik Waingarten \and Fermi Ma}
-\title{Plugging in Proof}
+\title{Extending Proposition 2.1 to $B_n/G$}
 
 
 \begin{document}         
 \maketitle
 
-The goal is to show that to minimize the number of 2-chains in $B_n/G$, we need to pick the largest level, then second largest, then third largest, ... etc. Which corresponds to theorem 1.2 in the Sperner's theorem and a problem of Erdos-Katona-Kleitman paper.
+Our goal is to show that we can minimize the number of 2-chains in a family $\F$ of $B_n/G$, by first picking elements from the largest level, then the second largest, then the third largest, etc. This is equivalent to looking at the middle level of $B_n/G$, and ``growing" out from it. This claim for $B_n/G$ corresponds to Theorem 1.2 in the paper titled ``Sperner's Theorem and a Problem of Erdos-Katona-Kleitman".
 
-The first step is to show proposition 2.1 holds. The proposition would say:
+Theorem 1.2 relies heavily on Proposition 2.1, so we first prove an extended version of the proposition. Let $M$ be the number of elements on the middle (maximal) level of $B_n/G$. 
 
-\textbf{Proposition}: There exists $\F$ a family of $s$ elements of $B_n/G$ that minimizes the number of 2-chains, where $s$ is bigger than the middle level (some 2-chains would be included) and if $A \in \F$ is of maximal cardinality, with $|A| = \dfrac{n}{2} + m$, then for any $B \subset A$ (in this case, subset corresponds to the $B_n/G$ definition of subset) with $|B| \geq \dfrac{n}{2} - m + 1$, $B \in \F$.
+\textbf{Proposition 2.1} (extended version): For any $s > M$, there exists a family $\F$ of $s$ elements of $B_n/G$ that minimizes the number of 2-chains such that if $A \in \F$ is of maximal cardinality, where we write $|A| = \dfrac{n}{2} + m$, then for any $B \subset A$ (in this case, $\subset$ corresponds to the $B_n/G$ definition of $<$) with $|B| \geq \dfrac{n}{2} - m + 1$, $B \in \F$.
 
-So first of all, we want to show that it is sufficient to show this for when the maximal cardinality element is $\dfrac{n}{2} + m$ where $m\geq 1$. Suppose that we are dealing with $\F$ so that all elements $A \in \F$ are $|A| < \dfrac{n}{2} + 1$. Then since we have more elements than the middle level, there must be an element that is not in the middle level. Which means that there exists an element $B \in \F$ where $|B| < \dfrac{n}{2}$. In this case, lets make 
+Before we prove this, we claim that this proposition is sufficient; in particular, it suffices to restrict our attention to the case where the maximal cardinality element has size $\frac{n}{2} + m$ where $m \geq 1$. We know that since $\F$ has more than $M$ elements, there is an element that does not lie on the middle level. If we consider 
 \[ \F' = \{ \overline{A} | A \in \F \} \]
-So $|\F'| = |\F|$ and $C, D \in \F$ and $C \subset D \iff \overline{D} \subset \overline{C}$, so these have the same number of 2-chains. In this case, $\F'$ has an element $|\overline{B}| \geq \dfrac{n}{2} + 1$. 
+we note that $|\F'| = |\F|$ and $C, D \in \F$ and $C \subset D \iff \overline{D} \subset \overline{C}$. Thus, $\F$ and $\F'$ behave identically, so we assume WLOG that there is an element above the middle layer. 
+
+%
+%So first of all, we want to show that it is sufficient to show this for when the maximal cardinality element is $\dfrac{n}{2} + m$ where $m\geq 1$. Suppose that we are dealing with $\F$ so that all elements $A \in \F$ are $|A| < \dfrac{n}{2} + 1$. Then since we have more elements than the middle level, there must be an element that is not in the middle level. Which means that there exists an element $B \in \F$ where $|B| < \dfrac{n}{2}$. In this case, lets make 
+%\[ \F' = \{ \overline{A} | A \in \F \} \]
+%So $|\F'| = |\F|$ and $C, D \in \F$ and $C \subset D \iff \overline{D} \subset \overline{C}$, so these have the same number of 2-chains. In this case, $\F'$ has an element $|\overline{B}| \geq \dfrac{n}{2} + 1$. 
 
 \textit{Proof}: (with commentary) Suppose not. Then by the above comment, we say that $m\geq 1$ since if $0\leq m<1$, then we are all at the middle level, so there isn't any subset $B$. Let $l \leq 2m - 1$ be the minimal integer such that there exists a maximal cardinality set $A$ with a corresponding subset $l$ levels below that is not in $\F$. Then we let 
 \[ \A = \{ A \in \F | |A| = \dfrac{n}{2} + m, \partial^lA \not\subset \F \} \]
@@ -58,6 +63,11 @@ In the shifted set, we have lost the 2-chain $C \subset A$ and gained no interme
 
 In order to do that, we need to confirm that $|\partial \A| \geq |\A|$ for $m\geq 1$ -- which I think is not true!!! take the full cycle---. 
 
-so that means that there must not be a matching from $\A \rightarrow \B$. So there is a different shifting - done by a different lemma. ]
+so that means that there must not be a matching from $\A \rightarrow \B$. 
+
+\textbf{Lemma A.1.} Let $G$ be a bipartite graph on $U \cup V$ with minimum degree $\delta_U \geq 1$ in $U$ and maximum degree $\Delta_V$ in $V$. Suppose there is no matching from $U$ to $V$. Then there exist nonempty subsets $U_1 \subset U$ and $V_1 \subset V$ with a perfect matching $M: U_1 \to V_1$ and $e(U_1,V) + e(U \ U_1,V_1) \leq |U_1|\Delta_V$ (proof of this lemma is given on page 18 of the original paper).
+
+
+
 We need to count the degrees and if the computation of the chains added and removed holds, then in the case of the partial matching, we only need to count the 2-chains added by the levels $\frac{n}{2}+m$ and $\frac{n}{2} + m - l$. Then using the lemma, we need to count the edges added and removed. 
 \end{document}
