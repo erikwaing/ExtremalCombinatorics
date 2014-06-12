@@ -1,0 +1,46 @@
+\documentclass[11pt]{article}
+\usepackage{graphicx}    % needed for including graphics e.g. EPS, PS
+\topmargin -1.5cm        % read Lamport p.163
+\oddsidemargin -0.04cm   % read Lamport p.163
+\evensidemargin -0.04cm  % same as oddsidemargin but for left-hand pages
+\textwidth 16.59cm
+\textheight 21.94cm 
+%\pagestyle{empty}       % Uncomment if don't want page numbers
+\parskip 7.2pt           % sets spacing between paragraphs
+%\renewcommand{\baselinestretch}{1.5} % Uncomment for 1.5 spacing between lines
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{verbatim}
+\parindent 0pt		 % sets leading space for paragraphs
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
+\author{Erik Waingarten \and Fermi Ma}
+\title{Kleitman Result for $B_n/G$}
+
+
+\begin{document}         
+\maketitle
+
+Fix $n$. Let $c(s)$ be the minimum number of 2-chains that a family of subsets of size $s$ must have. 
+
+\textbf{Proposition 2.1}: There exists a family $\F$ minimizing the number of 2-chains with $|\F| > M$ such that if $A \in \F$ with maximum cardinality $|A| = \dfrac{n}{2} + m$ for $m \geq 1$, then if $B \subset A$, $|B| > \dfrac{n}{2}-m+1$, $B \in \F$. 
+
+Now we want to show the following:
+
+\textbf{Theorem 2.1}: There exists a family of subsets $\F$ minimizing the number of 2-chains where $|F| = s \geq M$. Let $r \in \frac{1}{2}\mathbb{N}$ be the unique half-integer where $s$ is between the sizes middle $2r-2$ levels and the middle $2r$ levels such that:\\
+1. For every $A \in \F$, $A$ is in the middle $2r$ levels.\\
+2. Everything in the middle $2r-2$ levels is in $\F$.
+
+We prove the claim by induction on $s$. 
+
+When we have $s = M$, then we just take the middle level to be $\F$. So $r = 0$ or $\frac{1}{2}$. In this case, here there are no 2-chains. Everything in the middle level is in the middle 0 or 1 levels and everything in the middle level is in $\F$. 
+
+Now suppose for induction that it works for some $s$. Then if we have $|\F| = s + 1$ that satisfies the condition of proposition 2.1. And suppose that $\F$ has a subset $A$ outside of the middle $2r$ levels, assume it is in level $\dfrac{n}{2} + t$ for $t > r$. It follows from Proposition 2.1 that $A$ is involved with at least $\sum_{i=1}^{2t-1} |\partial^i A|$ 2-chains in $\F$. Since $\F - \{A \}$ is a set of $s$ subsets, there is at least $c(s)$ 2-chains not involving $A$. 
+
+So there are at least $c(s) + \sum_{i=1}^{2t-1} |\partial^i A|$ 2-chains in $\F$. Now since there must be a subset $F \notin \F$ with $|F| = \frac{n}{2}+r$ by definition of $r$ and since $|A| > |F|$. So shifting $A$ to $F$ gives us strictly less 2-chains.  
+
+Likewise, if there is a subset in the middle levels not in $\F$.
+
+By removing this element, we can make by induction a family that satisfies Proposition 2.1 and that all the elements are in the middle $2r$ levels with the optimal number of 2-chains. So now we can reinsert the element in the level $\frac{n}{2} + r$. By Proposition 2.1 we did not increase the number of 2-chains since all the same number of 2-chains that we add must have been there before. 
+\end{document}
