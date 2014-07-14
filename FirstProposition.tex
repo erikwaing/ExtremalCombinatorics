@@ -74,6 +74,12 @@ Which is true, since $l \leq 2m-1$.
 
 4. Now we allow $l = 1$. This is proved in the paper easily. 
 
-5. Now we assume that there is no matching. NEED TO CHECK THAT CONDITIONS FOR LEMMA STILL HOLD.
+5. Now we assume that there is no matching.
+
+We use the Lemma given in the paper: Let $G$ be a bipartite graph on $U \cup V$ with minimum degree $\delta_U \geq 1$ in $U$ and maximum degree $\Delta_V$ in $V$. Suppose there is no matching from $U$ to $V$. Then there exist nonempty subsets $U_1 \subset U$ and $V_1 \subset V$ with a perfect matching $M: U_1 \to V_1$ and $e(U_1,V) + E(U \setminus U_1,V_1) \leq |U_1|\Delta_V$.
+
+We claim that the auxiliary graph satisfies the conditions of the lemma with $U = \A, V = \B, \Delta_V = |U^l(M(A)) \cap F|$.
+
+We define $\A_1$ and $\B_1$ and $\tilde{\F}$ as in the paper, and we get that the number of chains we are losing is $|\A_1||\delta^l A| - e(\A_1,\B)$ (where $A$ can be any set of size $n/2 + m$). Same argument from above shows that $|\delta^l A| > |U^l(M(A)) \cap F|$, so the same argument from the paper can be copied. In particular, we conclude that $\tilde{\F}$ has fewer 2-chains than $\F$, contradicting the optimality of $\F$.
 
 \end{document}
