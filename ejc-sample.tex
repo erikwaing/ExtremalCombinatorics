@@ -1,0 +1,231 @@
+% EJC papers *must* begin with the following two lines. 
+\documentclass[12pt]{article}
+\usepackage{e-jc}
+
+% Please remove all other commands that change parameters such as
+% margins or pagesizes.
+
+% only use standard LaTeX packages
+% only include packages that you actually need
+
+% we recommend these ams packages
+\usepackage{amsthm,amsmath,amssymb}
+
+% we recommend the graphicx package for importing figures
+\usepackage{graphicx}
+
+% use this command to create hyperlinks (optional and recommended)
+\usepackage[colorlinks=true,citecolor=black,linkcolor=black,urlcolor=blue]{hyperref}
+
+% use these commands for typesetting doi and arXiv references in the bibliography
+\newcommand{\doi}[1]{\href{http://dx.doi.org/#1}{\texttt{doi:#1}}}
+\newcommand{\arxiv}[1]{\href{http://arxiv.org/abs/#1}{\texttt{arXiv:#1}}}
+
+% all overfull boxes must be fixed; 
+% i.e. there must be no text protruding into the margins
+
+
+% declare theorem-like environments
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{claim}[theorem]{Claim}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{open}[theorem]{Open Problem}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{question}[theorem]{Question}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{note}[theorem]{Note}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% if needed include a line break (\\) at an appropriate place in the title
+
+\title{\bf An Extension of a Result of Das-Gan-Sudakov}
+
+% input author, affilliation, address and support information as follows;
+% the address should include the country, and does not have to include
+% the street address 
+
+\author{Erik Waingarten\\
+\small Department of Mathematics\\[-0.8ex]
+\small Massachusetts Institute of Technology\\[-0.8ex] 
+\small Cambridge, MA\\
+\small\tt eaw@mit.edu\\
+\and
+Fermi Ma\\
+\small Department of Mathematics\\[-0.8ex]
+\small Massachusetts Institute of Technology\\[-0.8ex]
+\small Cambridge, MA\\
+\small\tt fermima@mit.edu
+\and
+Peter Kleinhenz\\
+\small Department of Mathematics\\[-0.8ex]
+\small Massachusetts Institute of Technology\\[-0.8ex]
+\small Cambridge, MA\\
+\small\tt pkleinhe@mit.edu
+}
+
+% \date{\dateline{submission date}{acceptance date}\\
+% \small Mathematics Subject Classifications: comma separated list of
+% MSC codes available from http://www.ams.org/mathscinet/freeTools.html}
+
+\date{\dateline{August 1, 2014}{XX}\\
+\small Mathematics Subject Classifications: XX}
+
+\begin{document}
+
+\maketitle
+
+% E-JC papers must include an abstract. The abstract should consist of a
+% succinct statement of background followed by a listing of the
+% principal new results that are to be found in the paper. The abstract
+% should be informative, clear, and as complete as possible. Phrases
+% like "we investigate..." or "we study..." should be kept to a minimum
+% in favor of "we prove that..."  or "we show that...".  Do not
+% include equation numbers, unexpanded citations (such as "[23]"), or
+% any other references to things in the paper that are not defined in
+% the abstract. The abstract will be distributed without the rest of the
+% paper so it must be entirely self-contained.
+
+\begin{abstract}
+  A result of Shagnik Das, Wenying Gan, and Benny Sudakov shows that
+
+  % keywords are optional
+  \bigskip\noindent \textbf{Keywords:} graph reconstruction
+  conjecture; Broglington manifold; Pipletti's classification
+\end{abstract}
+
+\section{Introduction}
+
+The reconstruction conjecture states that the multiset of unlabeled
+vertex-deleted subgraphs of a graph determines the graph, provided it
+has at least three vertices.  This problem was independtly introduced
+by Ulam~\cite{Ulam} and Kelly~\cite{Kelly}.  The reconstruction
+conjecture is widely studied
+\cite{Bollobas,FGH,HHRT,KSU,RM,RR,Stockmeyer} and is very interesting
+because...... See \cite{WikipediaReconstruction} for more about the
+reconstruction conjecture.
+
+\begin{definition} 
+  A graph is \emph{fabulous} if....
+\end{definition}
+
+\begin{theorem}
+  \label{Thm:FabGraphs}
+  All planar graphs are fabulous.
+\end{theorem}
+
+\begin{proof}
+  Suppose on the contrary that some planar graph is not fabulous....
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Broglington Manifolds}
+
+This section describes background information about Broglington
+Manifolds.
+
+\begin{lemma}
+  \label{lem:Technical}
+  Broglington manifolds are abundant.
+\end{lemma}
+
+\begin{proof}
+
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Proof of Theorem~\ref{Thm:FabGraphs}}
+
+In this section we complete the proof of Theorem~\ref{Thm:FabGraphs}.
+
+\begin{proof}[Proof of Theorem~\ref{Thm:FabGraphs}]
+Let $G$ be a graph... Hence
+ % use the amsmath align environment for multi-line equations
+  \begin{align}
+    |X| &= abcdefghijklmnopqrstuvwxyz \nonumber\\
+    &= \alpha\beta\gamma
+  \end{align}
+  This completes the proof of Theorem~\ref{Thm:FabGraphs}.
+\end{proof}
+
+\begin{figure}[!h]
+  \begin{center}
+    % use \includegraphics to import figures 
+    % \includegraphics{filename}
+  \end{center}
+  \caption{\label{fig:InformativeFigure} Here is an informative
+    figure.}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Acknowledgements}
+Thanks to Professor Querty for suggesting the proof of
+Lemma~\ref{lem:Technical}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \bibliographystyle{plain} 
+% \bibliography{myBibFile} 
+% If you use BibTeX to create a bibliography
+% then copy and past the contents of your .bbl file into your .tex file
+
+\begin{thebibliography}{10}
+
+\bibitem{Bollobas} B{\'e}la Bollob{\'a}s.  \newblock Almost every
+  graph has reconstruction number three.  \newblock {\em J. Graph
+    Theory}, 14(1):1--4, 1990.
+
+\bibitem{WikipediaReconstruction} Wikipedia contributors.  \newblock
+  Reconstruction conjecture.  \newblock {\em Wikipedia, the free
+    encyclopedia}, 2011.
+
+\bibitem{FGH} J.~Fisher, R.~L. Graham, and F.~Harary.  \newblock A
+  simpler counterexample to the reconstruction conjecture for
+  denumerable graphs.  \newblock {\em J. Combinatorial Theory Ser. B},
+  12:203--204, 1972.
+
+\bibitem{HHRT} Edith Hemaspaandra, Lane~A. Hemaspaandra,
+  Stanis{\l}aw~P. Radziszowski, and Rahul Tripathi.  \newblock
+  Complexity results in graph reconstruction.  \newblock {\em Discrete
+    Appl. Math.}, 155(2):103--118, 2007.
+
+\bibitem{Kelly} Paul~J. Kelly.  \newblock A congruence theorem for
+  trees.  \newblock {\em Pacific J. Math.}, 7:961--968, 1957.
+
+\bibitem{KSU} Masashi Kiyomi, Toshiki Saitoh, and Ryuhei Uehara.
+  \newblock Reconstruction of interval graphs.  \newblock In {\em
+    Computing and combinatorics}, volume 5609 of {\em Lecture Notes in
+    Comput. Sci.}, pages 106--115. Springer, 2009.
+
+\bibitem{RM} S.~Ramachandran and S.~Monikandan.  \newblock Graph
+  reconstruction conjecture: reductions using complement, connectivity
+  and distance.  \newblock {\em Bull. Inst. Combin. Appl.},
+  56:103--108, 2009.
+
+\bibitem{RR} David Rivshin and Stanis{\l}aw~P. Radziszowski.
+  \newblock The vertex and edge graph reconstruction numbers of small
+  graphs.  \newblock {\em Australas. J. Combin.}, 45:175--188, 2009.
+
+\bibitem{Stockmeyer} Paul~K. Stockmeyer.  \newblock The falsity of the
+  reconstruction conjecture for tournaments.  \newblock {\em J. Graph
+    Theory}, 1(1):19--25, 1977.
+
+\bibitem{Ulam} S.~M. Ulam.  \newblock {\em A collection of
+    mathematical problems}.  \newblock Interscience Tracts in Pure and
+  Applied Mathematics, no. 8.  Interscience Publishers, New
+  York-London, 1960.
+
+\end{thebibliography}
+
+\end{document}
