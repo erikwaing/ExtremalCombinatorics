@@ -139,6 +139,7 @@ Theorem 1.2 of [Das] completely characterizes the minimum number of 2-chains in 
 %% Still need to make the statement of this lemma a lot more clear
 
 \begin{lemma}
+\label{lemma1}
 \[ \sum_{A\in \A}\sum_{i = 1}^{l-1} |U^i(M(A)) \cap \F| \leq \sum_{A \in \A}\sum_{i = 1}^{l-1} |\partial^i A | \]
 when $l \leq 2m-1$
 \end{lemma}
@@ -167,12 +168,14 @@ Which is true, since $l \leq 2m-1$.
 The following Lemma is due to [Das]. We restate it here for clarity, but an interested reader can find the full proof in [Das].
 
 \begin{lemma}
+\label{lemma2}
 Let $G$ be a bipartite graph on $U \cup V$ with minimum degree $\delta_U \geq 1$ in $U$ and maximum degree $\Delta_V$ in $V$. Suppose there is no matching from $U$ to $V$. Then there exist nonempty subsets $U_1 \subset U$ and $V_1 \subset V$ with a perfect matching $M: U_1 \to V_1$ and $e(U_1,V) + e(U \setminus U_1,V_1) \leq |U_1| \Delta_V$.
 \end{lemma}
 
 Now, let $m = \binom{n-2}{\lfloor n/2 \rfloor -2} + \binom{n-1}{\lfloor n/2 \rfloor}$.
 
-\begin{proposition} For any $s > m$, there exists a family $\F$ of $s$ elements of $B_n / G_{(12)}$ that minimizes the number of 2-chains and is such that if $A \in \F$ is of maximal cardinality, where we write $|A| = \frac{n}{2}+m$, then for any $B \subset A$ with $|B| \geq \frac{n}{2} - m + 1$, $B \in \F$.
+\begin{proposition}
+\label{proposition1} For any $s > m$, there exists a family $\F$ of $s$ elements of $B_n / G_{(12)}$ that minimizes the number of 2-chains and is such that if $A \in \F$ is of maximal cardinality, where we write $|A| = \frac{n}{2}+m$, then for any $B \subset A$ with $|B| \geq \frac{n}{2} - m + 1$, $B \in \F$.
 \end{proposition}
 
 \begin{proof} Suppose this is false. We can assume $m \geq 1$ since if $m = 0$ there cannot be a subset $B$. Let $l \leq 2m-1$ be the minimal integer such that there exists a maximal cardinality set $A$ with a corresponding subset $l$ levels below that is not in $\F$. We define
@@ -197,13 +200,23 @@ The fact that
 when $l \leq 2m-1$
 is exactly the statement of the first lemma.
 
-%NEED TO FINISH THE MIDDLE PART OF THE PROOF
+%%following part is almost a direct copy paste from pluginproof.tex and needs to be completely changed!! only included for now so everything is in one place
+
+This reduces the problem to the case where $l=1$. So we have the missing subset one level below $A$. If there was another set $D \subset A$ where $|D| = |M(A)|$ but $D \in \F$. Then we lose the 2-chain $D \subset A$ and gain no other 2-chains. So we might as well assume that $\partial \A = \B$. 
+
+We now show that this means that the sets $A \in \A$ cannot be involved in any 2-chains in $\F$. Suppose that there existed a 2-chain with $C \subset A$, and $x \in C$. Then we shift $A$ to $A - \{ x \}$ which is in $\B$ (because $\partial A = B$). We also shift the remaining sets in $\A$ by an arbitrary matching from $\A - \{ A \}$ to $\B' = \partial A - \{ A - \{x\} \}$ - which apparently can be done by Hall's theorem ---- check this. 
+
+In the shifted set, we have lost the 2-chain $C \subset A$ and gained no intermediate 2-chains. So the shifted set has fewer. Therefoer, the sets in $\A$ cannot be part of any 2-chains. So the shifted set to $\partial \A$ will not be in any 2-chains. Since $|\F|$ is greater than the middle level, we know that there is some 2-chain, suppose it is $C \subset D$. So we can additionally shift $D$ to some element in $\partial \A$ that was not already shifted to. So we lose a 2-chain and not gain any. 
+
+In order to do that, we need to confirm that $|\partial \A| \geq |\A|$ for $m\geq 1$ -- which I think is not true!!! take the full cycle---. 
+
+so that means that there must not be a matching from $\A \rightarrow \B$. 
+
+%%end of direct copy paste part
 
 Now we assume that there is no matching.
 
-We use the Lemma given in the paper: Let $G$ be a bipartite graph on $U \cup V$ with minimum degree $\delta_U \geq 1$ in $U$ and maximum degree $\Delta_V$ in $V$. Suppose there is no matching from $U$ to $V$. Then there exist nonempty subsets $U_1 \subset U$ and $V_1 \subset V$ with a perfect matching $M: U_1 \to V_1$ and $e(U_1,V) + E(U \setminus U_1,V_1) \leq |U_1|\Delta_V$.
-
-We claim that the auxiliary graph satisfies the conditions of the lemma with $U = \A, V = \B, \Delta_V = |U^l(M(A)) \cap F|$.
+We use Lemma~\ref{lemma2}, and we claim that the auxiliary graph satisfies the conditions of the lemma with $U = \A, V = \B, \Delta_V = |U^l(M(A)) \cap F|$.
 
 We define $\A_1$ and $\B_1$ and $\tilde{\F}$ as in the paper, and we get that the number of chains we are losing is $|\A_1||\delta^l A| - e(\A_1,\B)$ (where $A$ can be any set of size $n/2 + m$). Same argument from above shows that $|\delta^l A| > |U^l(M(A)) \cap F|$, so the same argument from the paper can be copied. In particular, we conclude that $\tilde{\F}$ has fewer 2-chains than $\F$, contradicting the optimality of $\F$.
 
@@ -222,16 +235,26 @@ We define $\A_1$ and $\B_1$ and $\tilde{\F}$ as in the paper, and we get that th
 \end{theorem}
 
 \begin{proof}
-We prove this with induction.
+We prove this with induction on $s$.
+
+When we have $s = M$, then we just take the middle level to be $\F$. So $r = 0$ or $\frac{1}{2}$. In this case, here there are no 2-chains. Everything in the middle level is in the middle 0 or 1 levels and everything in the middle level is in $\F$. 
+
+Now suppose for induction that it works for some $s$. Then if we have $|\F| = s + 1$ that satisfies the condition of proposition 2.1. And suppose that $\F$ has a subset $A$ outside of the middle $2r$ levels, assume it is in level $\dfrac{n}{2} + t$ for $t > r$. It follows from Proposition 2.1 that $A$ is involved with at least $\sum_{i=1}^{2t-1} |\partial^i A|$ 2-chains in $\F$. Since $\F - \{A \}$ is a set of $s$ subsets, there is at least $c(s)$ 2-chains not involving $A$. 
+
+So there are at least $c(s) + \sum_{i=1}^{2t-1} |\partial^i A|$ 2-chains in $\F$. Now since there must be a subset $F \notin \F$ with $|F| = \frac{n}{2}+r$ by definition of $r$ and since $|A| > |F|$. So shifting $A$ to $F$ gives us strictly less 2-chains.  
+
+Likewise, if there is a subset in the middle levels not in $\F$.
+
+By removing this element, we can make by induction a family that satisfies Proposition 2.1 and that all the elements are in the middle $2r$ levels with the optimal number of 2-chains. So now we can reinsert the element in the level $\frac{n}{2} + r$. By Proposition 2.1 we did not increase the number of 2-chains since all the same number of 2-chains that we add must have been there before. 
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{A Counterexample for a Different $G$}
 
 This result does not extend to $B_n / G$ for any $G$. In particular, let $n = 6$ and let $G$ be the group generated by the transpositions $(12), (23),$ and $(34)$. An the following figure gives an example of a collection of 12 sets that is not taken by the middle levels and has less 2-chains than the collection of the 12 middle sets.
-
-\includegraphics{counterexamplegraph.pdf}
-
+\begin{center}
+\includegraphics[scale=0.7]{counterexamplegraph.pdf}
+\end{center}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{Acknowledgements}
 We thank Jonathan Novak (MIT) for guiding our research and providing helpful discussions.
