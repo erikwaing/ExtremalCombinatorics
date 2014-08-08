@@ -78,7 +78,7 @@ Fermi Ma\\
 % \small Mathematics Subject Classifications: comma separated list of
 % MSC codes available from http://www.ams.org/mathscinet/freeTools.html}
 
-\date{\dateline{August 1, 2014}{XX}\\
+\date{\dateline{August, 2014}{XX}\\
 \small Mathematics Subject Classifications: XX}
 
 \begin{document}
@@ -100,9 +100,7 @@ Fermi Ma\\
   A result of Shagnik Das, Wenying Gan, and Benny Sudakov shows that
 
   % keywords are optional
-  \bigskip\noindent \textbf{Keywords:} graph reconstruction
-  conjecture; Broglington manifold; Pipletti's classification
-\end{abstract}
+  \bigskip\noindent \textbf{Keywords:} Sperner's Theorem; Group Actions; Minimizing 2-chains\end{abstract}
 
 \section{Introduction}
 
@@ -112,7 +110,7 @@ We analyze this problem for posets of the form $B_n / G$, where $G$ is subgroup 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Notation}
+\section{Background and Notation}
 
 %This section needs a lot of work
 
@@ -138,7 +136,7 @@ Theorem 1.2 of [Das] completely characterizes the minimum number of 2-chains in 
 
 %% Still need to make the statement of this lemma a lot more clear
 
-\begin{lemma}
+\begin{lemma} 
 \label{lemma1}
 \[ \sum_{A\in \A}\sum_{i = 1}^{l-1} |U^i(M(A)) \cap \F| \leq \sum_{A \in \A}\sum_{i = 1}^{l-1} |\partial^i A | \]
 when $l \leq 2m-1$
@@ -237,7 +235,9 @@ We define $\A_1$ and $\B_1$ and $\tilde{\F}$ as in the paper, and we get that th
 \begin{proof}
 We prove this with induction on $s$.
 
-When we have $s = M$, then we just take the middle level to be $\F$. So $r = 0$ or $\frac{1}{2}$. In this case, here there are no 2-chains. Everything in the middle level is in the middle 0 or 1 levels and everything in the middle level is in $\F$. 
+For the base case, $s = m$. Here, $\F$ is set to be the middle level, so $r = 0$ or $\frac{1}{2}$. There are no 2-chains, and the two properties are satisfied.
+
+For the inductive step, suppose this works for some $s$. 
 
 Now suppose for induction that it works for some $s$. Then if we have $|\F| = s + 1$ that satisfies the condition of proposition 2.1. And suppose that $\F$ has a subset $A$ outside of the middle $2r$ levels, assume it is in level $\dfrac{n}{2} + t$ for $t > r$. It follows from Proposition 2.1 that $A$ is involved with at least $\sum_{i=1}^{2t-1} |\partial^i A|$ 2-chains in $\F$. Since $\F - \{A \}$ is a set of $s$ subsets, there is at least $c(s)$ 2-chains not involving $A$. 
 
