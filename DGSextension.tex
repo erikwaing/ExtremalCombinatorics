@@ -210,15 +210,17 @@ Which is true, since $l \leq 2m-1$.
 %%
 %%
 
-This reduces the problem to the case where $l=1$. So we have the missing subset one level below $A$. If there was another set $D \subset A$ where $|D| = |M(A)|$ but $D \in \F$. Then we lose the 2-chain $D \subset A$ and gain no other 2-chains. So we might as well assume that $\partial \A = \B$. 
+This reduces the problem to the case where $l=1$. So we have at least one missing subset one level below $A$. If there was another set $D \subset A$ where $|D| = |M(A)|$ but $D \in \F$. Then we lose the 2-chain $D \subset A$ and gain no other 2-chains. So we might as well shift all the elements and assume that $\partial \A = \B$. 
 
-We now show that this means that the sets $A \in \A$ cannot be involved in any 2-chains in $\F$. Suppose that there existed a 2-chain with $C \subset A$, and $x \in C$. Then we shift $A$ to $A - \{ x \}$ which is in $\B$ (because $\partial A = B$). We also shift the remaining sets in $\A$ by an arbitrary matching from $\A - \{ A \}$ to $\B' = \partial A - \{ A - \{x\} \}$ - which apparently can be done by Hall's theorem ---- check this. 
+We now show that this means that the sets $A \in \A$ cannot be involved in any 2-chains in $\F$. Suppose that there existed a 2-chain with $C \subset A$, and $x \in C$. Then we shift $A$ to $A - \{ x \}$ which is in $\B$ (because $\partial \A = \B$). We also shift the remaining sets in $\A$ by an arbitrary matching from $\A - \{ A \}$ to $\B' = \partial A - \{ A - \{x\} \}$. Note that this matching surely exists by Phillip Hall's Theorem. 
 
-In the shifted set, we have lost the 2-chain $C \subset A$ and gained no intermediate 2-chains. So the shifted set has fewer. Therefoer, the sets in $\A$ cannot be part of any 2-chains. So the shifted set to $\partial \A$ will not be in any 2-chains. Since $|\F|$ is greater than the middle level, we know that there is some 2-chain, suppose it is $C \subset D$. So we can additionally shift $D$ to some element in $\partial \A$ that was not already shifted to. So we lose a 2-chain and not gain any. 
+If $X \subset \A - \{ A \}$, then each element in $X$ has at least $\frac{n}{2} + r - 1$ outgoing edges. Furthermore, each element $B \in \B'$ has at most $\frac{n}{2} - r + 1$ outgoing edges. So if $U \subset X$, and we let $E$ be the number of edges,
+\[ |U|*(\frac{n}{2}+r-1) = E \leq (\frac{n}{2}-r+1)|N(U)| \]
+Since $r \geq 1$, $\dfrac{\frac{n}{2}+r-1}{\frac{n}{2}-r+1} \geq 1$ so we can apply Phillip Hall's theorem.
 
-In order to do that, we need to confirm that $|\partial \A| \geq |\A|$ for $m\geq 1$ -- which I think is not true!!! take the full cycle---. 
+In the shifted set, we have lost the 2-chain $C \subset A$ and gained no intermediate 2-chains. So the shifted set has fewer 2-chains. Therefore, the sets in $\A$ cannot be part of any 2-chains. So the shifted set to $\partial \A$ will not be in any 2-chains. Since $|\F|$ is greater than the middle level, we know that there is some 2-chain, suppose it is $C \subset D$. So we can additionally shift $D$ to some element in $\partial \A$. So we lose a 2-chain and not gain any. 
 
-so that means that there must not be a matching from $\A \rightarrow \B$. 
+So that means that there must not be a matching from $\A \rightarrow \B$. 
 
 %%end of direct copy paste part
 
