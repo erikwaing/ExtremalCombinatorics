@@ -201,15 +201,6 @@ it sufficies to show that
 Which is true, since $l \leq 2m-1$.
 \end{proof}
 
-%%following part is almost a direct copy paste from pluginproof.tex and needs to be completely changed!! only included for now so everything is in one place
-%%%%
-%%%
-%%
-%%		revise up to here.
-%%
-%%
-%%
-
 This reduces the problem to the case where $l=1$. So we have at least one missing subset one level below $A$. If there was another set $D \subset A$ where $|D| = |M(A)|$ but $D \in \F$. Then we lose the 2-chain $D \subset A$ and gain no other 2-chains. So we might as well shift all the elements and assume that $\partial \A = \B$. 
 
 We now show that this means that the sets $A \in \A$ cannot be involved in any 2-chains in $\F$. Suppose that there existed a 2-chain with $C \subset A$, and $x \in C$. Then we shift $A$ to $A - \{ x \}$ which is in $\B$ (because $\partial \A = \B$). We also shift the remaining sets in $\A$ by an arbitrary matching from $\A - \{ A \}$ to $\B' = \partial A - \{ A - \{x\} \}$. Note that this matching surely exists by Phillip Hall's Theorem. 
@@ -220,38 +211,45 @@ So $\dfrac{\frac{n}{2}+r-2}{\frac{n}{2}-r+1} \geq 1$ when $r \geq \frac{3}{2}$ a
 
 Need to confirm for when $r = 1$!!
 
-In the shifted set, we have lost the 2-chain $C \subset A$ and gained no intermediate 2-chains. So the shifted set has fewer 2-chains. Therefore, the sets in $\A$ cannot be part of any 2-chains. So the shifted set to $\partial \A$ will not be in any 2-chains. Since $|\F|$ is greater than the middle level, we know that there is some 2-chain, suppose it is $C \subset D$. So we can additionally shift $D$ to some element in $\partial \A$. So we lose a 2-chain and not gain any. 
+In the shifted set, we have lost the 2-chain $C \subset A$ and gained no intermediate 2-chains. So the shifted set has fewer 2-chains. Therefore, the sets in $\A$ cannot be part of any 2-chains. So the shifted set to $\partial \A$ will not be in any 2-chains. Since $|\F|$ is greater than the middle level, we know that there is some 2-chain, suppose it is $C \subset D$. So we can additionally shift $D$ to some element in $\partial \A$ - we need to make sure there is an extra spot. We know this is true since $|\partial \A| > |\A|$ for $r \geq 1$. This is because each set $A \in \A$ has at least $\frac{n}{2}+r-1$ outgoing edges and each $B \in \partial \A$ has at most $\frac{n}{2}-r+1$ outgoing edges; similarly to before, $\dfrac{\frac{n}{2}+r-1}{\frac{n}{2}-r+1} > 1$ when $r \geq \frac{3}{2}$. 
+
+So we lose a 2-chain and not gain any. 
 
 So that means that there must not be a matching from $\A \rightarrow \B$. 
 
-%%end of direct copy paste part
-
 Now we assume that there is no matching.
 
-We use Lemma~\ref{lemma2}, and we claim that the auxiliary graph satisfies the conditions of the lemma with $U = \A, V = \B, \Delta_V = |U^l(M(A)) \cap F|$.
+We use Lemma~\ref{lemma2}, and we claim that the auxiliary graph satisfies the conditions of the lemma with $U = \A, V = \B, \Delta_V = \dbinom{\frac{n}{2} - r + l}{l}$.
 
-We define $\A_1$ and $\B_1$ and $\tilde{\F}$ as in the paper, and we get that the number of chains we are losing is $|\A_1||\delta^l A| - e(\A_1,\B)$ (where $A$ can be any set of size $n/2 + m$). Same argument from above shows that $|\delta^l A| > |U^l(M(A)) \cap F|$, so the same argument from the paper can be copied. In particular, we conclude that $\tilde{\F}$ has fewer 2-chains than $\F$, contradicting the optimality of $\F$.
+So we get subsets $\A_1 \subset \A$ and $\B_1 \subset \B$, along with $M:\A_1 \rightarrow \B_1$. We get $\tilde{\F}$ by shifting the elements from $\A_1$ to $\B_1$; since $M(A) \subset A$ (this is the same it says in Sudakov's paper), we only need to consider intermediate chains. Since $r \geq 1$, the same calculation yields that we decrease the number of 2-chains. So we only need to consider the 2-chains destroyed and created between $\A$ and $\B$, or levels $\frac{n}{2} + r$ and $\frac{n}{2} + r - l$.
 
-
-
-
-%need to figure out the proper symbol so the absolute value doesn't look like the other vertical bar
+The number of 2-chains created is exactly $e(\A - \A_1, \B_1)$. Also, we lose the chains between $\A_1$ and $\partial^l\A_1 \cap \F = \partial^l\A_1 - \B$. We are losing at least
+\[ |\A_1|\dbinom{\frac{n}{2}+m-1}{l} - e(\A_1, \B) \geq |\A_1|\dbinom{\frac{n}{2} - m + l}{l} - e(\A_1, \B) \geq e(\A - \A_1, \B_1) \] 
+So in fact, we can shift these down without gaining any more 2-chains. We can repeat this process finitely many times until the conditions of the lemma are true.
 \end{proof}
 
 
-\begin{theorem} For any $s \geq m$, let $r \in \frac{1}{2}\mathbb{N}$ be the unique half-integer such that $\sum_{i = \frac{n}{2} - r +1}^{\frac{n}{2} + r -1} |P_i| < s \leq \sum_{i = \frac{n}{2}-r}^{\frac{n}{2}+r}|P_i|$. There exists a family of subsets $\F$ of $B_n / G_{(12)}$ where $|\F| = s$ that minimizes the number of 2-chains, and satisfies the following properties:
+\begin{theorem} For any $s \geq m$, let $r \in \frac{1}{2}\mathbb{N}$ be the unique half-integer such that $\sum_{i = \frac{n}{2} - r +1}^{\frac{n}{2} + r -1} |P_i| < s \leq \sum_{i = \frac{n}{2}-r}^{\frac{n}{2}+r}|P_i|$. If a family of subsets $\F$ of $B_n / G_{(12)}$ with $|\F| = s$ satisfies the following properties:
 
 1) For every $A \in \F$, $n/2 - r \leq |A| \leq n/2 + r$
 
 2) For any $A \in B_n / G_{(12)}$ with $n/2 - r + 1 \leq |A| \leq n/2 + r - 1$, we have $A \in \F$.
+
+3) If $s > \sum_{i=\frac{n}{2}-r+1}^{\frac{n}{2}+r}$, then the level $\frac{n}{2}+r$ is full.
+
+4) If $s \leq \sum_{i=\frac{n}{2}-r+1}^{\frac{n}{2}+r}$, then the level $\frac{n}{2}-r$ is empty.
+
+then is minimizes the number of 2-chains.
 \end{theorem}
 
 \begin{proof}
 We prove this with induction on $s$.
 
-For the base case, $s = m$. Here, $\F$ is set to be the middle level, so $r = 0$ or $\frac{1}{2}$. There are no 2-chains, and the two properties are satisfied.
+For the base case, $s = m$. If $n$ is even and $r = 0$, then $\F$ only has elements from the middle level and [Stanley] tells us that this is minimizing the number of 2-chains. If $n$ is odd and $r = \frac{1}{2}$, then $\F$ has elements from the middle two levels. Property 2 does not mean anything. Property 3 says that level $\lceil \frac{n}{2} \rceil$ is full and level $\lfloor \frac{n}{2} \rfloor$ is empty. [Stanley] tells us that these families minimize the number of 2-chains. 
 
-For the inductive step, assume $s > m$. Consider the family $\F$ that satisfies the property in Proposition~\ref{proposition1}, whose existence is guaranteed by the proposition. We claim this family $\F$ satisfies the two desired properties.
+For the inductive step, assume $s > m$. Apply the transformations necessary to get a family that satisfies Proposition~\ref{proposition1} and minimizes the number of 2-chains. Suppose this family does not satisfy Property 1. Since $\F$ and $\F' = \{ [n] - F | F \in \F \}$ are involved in the same number of 2-chains, we can assume that the largest element $F \in \F$ has $|F| = \frac{n}{2} + t$ where $t > r$. Then from Proposition~\ref{proposition1}, we know that every $G \subset F$, where $|G| \geq \frac{n}{2}-t+1$, we have $G \in \F$. So $F$ is involved in at least
+\[ \sum_{i=1}^{2t-1} \dbinom{\frac{n}{2}+t - 1}{i} + \dbinom{\frac{n}{2}+t-2}{i-2}\]
+2-chains. 
 
 To see why it satisfies property 1, suppose for the sake of contradiction that it does not. By a symmetry argument, this implies that there is some maximal cardinality $G \in \F$ with size $|G| = \frac{n}{2} + t$ where $t > r$. The proposition tells us that $G$ is a member of SOME LARGE NUMBER of 2-chains. If we consider $\F \setminus \{G\}$, we note that this has at least $c_2(n,s-1)$ 2-chains in $\F$ not involving $G$. Thus, the number of 2-chains in $\F$ is at least $c_2(n,s-1) + $ LARGE NUMBER, which is strictly greater than $c_2(n,s)$ because we could just add a subset of size $\frac{n}{2} + r$ that would add fewer 2-chains.
 
