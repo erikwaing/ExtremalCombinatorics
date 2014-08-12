@@ -155,7 +155,7 @@ Now, let $m = \binom{n-2}{\lfloor n/2 \rfloor -2} + \binom{n-1}{\lfloor n/2 \rfl
 
 \begin{proof} Suppose the proposition is false, and that all families of sets minimizing the number of 2-chains contain some sets of size $\frac{n}{2} + r$ with subsets less than $2r$ levels below not included in the family. Without loss of generality we can say that $r \geq 1$, since otherwise, the statement is trivially true since there is a subset must have smaller size. 
 
-Let $l \leq 2m-1$ be the smallest integer such that there exists a maximal cardinality set $A$ with a corresponding subset $l$ levels below that is not in $\F$. We define
+Let $l \leq 2r-1$ be the smallest integer such that there exists a maximal cardinality set $A$ with a corresponding subset $l$ levels below that is not in $\F$. We define
 \begin{align*}
 \A &= \{A \in F| \lvert a \rvert = \frac{n}{2}+m, \partial^l A \not\subset \F \}\\
 \B &= \partial^l A - \F
@@ -166,7 +166,7 @@ First, consider the case where there exists an injective mapping $M: \A \to \B$.
 
 Note that if $C \subset B$ is a newly introduced 2-chain for some $B \in \B$, then $C \subset B \subset A$, so we have lost exactly one 2-chain as well. Therefore, it is sufficient to only consider 2-chains added and removed between the levels $\frac{n}{2} + r$ and $\frac{n}{2} + r - l$ (the levels of $\A$ and $\B$, respectively).
 
-Suppose $l \geq 1$. By the minimality of the choice of $l$, all the shadows from $\A$ that are less than $l$ must be in $\F$. That is $\partial^i A \subset \F$ for $1 \leq i < l -1$. We will count the number of intermediate 2-chains that we lose and gain in order to show that we lose more 2-chains that we gain.
+Suppose $l > 1$. By the minimality of the choice of $l$, all the shadows from $\A$ that are less than $l$ must be in $\F$. That is $\partial^i A \subset \F$ for $1 \leq i < l -1$. We will count the number of intermediate 2-chains that we lose and gain in order to show that we lose more 2-chains that we gain.
 
 The number of intermediate 2-chains in $\F$ that we lose is
 \[ \sum_{A \in \A}\sum_{i = 1}^{l-1} |\partial^i A | \]
@@ -214,9 +214,11 @@ This reduces the problem to the case where $l=1$. So we have at least one missin
 
 We now show that this means that the sets $A \in \A$ cannot be involved in any 2-chains in $\F$. Suppose that there existed a 2-chain with $C \subset A$, and $x \in C$. Then we shift $A$ to $A - \{ x \}$ which is in $\B$ (because $\partial \A = \B$). We also shift the remaining sets in $\A$ by an arbitrary matching from $\A - \{ A \}$ to $\B' = \partial A - \{ A - \{x\} \}$. Note that this matching surely exists by Phillip Hall's Theorem. 
 
-If $X \subset \A - \{ A \}$, then each element in $X$ has at least $\frac{n}{2} + r - 1$ outgoing edges. Furthermore, each element $B \in \B'$ has at most $\frac{n}{2} - r + 1$ outgoing edges. So if $U \subset X$, and we let $E$ be the number of edges,
-\[ |U|*(\frac{n}{2}+r-1) = E \leq (\frac{n}{2}-r+1)|N(U)| \]
-Since $r \geq 1$, $\dfrac{\frac{n}{2}+r-1}{\frac{n}{2}-r+1} \geq 1$ so we can apply Phillip Hall's theorem.
+If $X \subset \A - \{ A \}$, then each element in $X$ has at least $\frac{n}{2} + r - 2$ outgoing edges (minus 1 for if it landed on $A - \{x\}$, and minus 1 if 1 and 2 are in the set). Furthermore, each element $B \in \B'$ has at most $\frac{n}{2} - r + 1$ outgoing edges. So if $U \subset X$, and we let $E$ be the number of edges,
+\[ |U|*(\frac{n}{2}+r-2) = E \leq (\frac{n}{2}-r+1)|N(U)| \]
+So $\dfrac{\frac{n}{2}+r-2}{\frac{n}{2}-r+1} \geq 1$ when $r \geq \frac{3}{2}$ and in this case we can apply Phillip Hall's Theorem. 
+
+Need to confirm for when $r = 1$!!
 
 In the shifted set, we have lost the 2-chain $C \subset A$ and gained no intermediate 2-chains. So the shifted set has fewer 2-chains. Therefore, the sets in $\A$ cannot be part of any 2-chains. So the shifted set to $\partial \A$ will not be in any 2-chains. Since $|\F|$ is greater than the middle level, we know that there is some 2-chain, suppose it is $C \subset D$. So we can additionally shift $D$ to some element in $\partial \A$. So we lose a 2-chain and not gain any. 
 
