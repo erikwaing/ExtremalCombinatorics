@@ -188,7 +188,7 @@ We first compute $R$ by spliting up $A$ in 2 cases or the number of 2-chains los
 \[ \sum_{i=1}^{l-1} \dbinom{\frac{n}{2} + m}{i} \]
 2. $\{ 1, 2 \} \subset A$. In this case, it doesn't matter whether we remove $1$ or $2$, so we count the number of sets in the following manner. First, we assume that we remove either 1 or 2 or none. In the other case, we remove 1 and 2.
 \[ \sum_{i=1}^{l-1} \left(\dbinom{\frac{n}{2} + m - 1}{i} + \dbinom{\frac{n}{2}+m-2}{i-2} \right) \]
-So we have computed $L$ to be the sum over all $A \in \A$:
+So we have computed $R$ to be the sum over all $A \in \A$:
 \[ R = \sum_{\{1, 2\} \not\subset A \in \A} \sum_{i=1}^{l-1} \dbinom{\frac{n}{2} + m}{i} + \sum_{\{1, 2\} \subset A \in \A} \sum_{i=1}^{l-1} \left( \dbinom{\frac{n}{2}+m-1}{i} + \dbinom{\frac{n}{2}+m-2}{i-2}\right) \]
 
 Likewise, we can do the same for $L$, except now we are adding elements from the complements of $M(A)$. We can also assume that everything that we add is in $\F$ in the worst case
@@ -215,9 +215,7 @@ In the shifted set, we have lost the 2-chain $C \subset A$ and gained no interme
 
 So we lose a 2-chain and not gain any. 
 
-So that means that there must not be a matching from $\A \rightarrow \B$. 
-
-Now we assume that there is no matching.
+Now we assume that there is no injective map from $\A \rightarrow \B$.
 
 We use Lemma~\ref{lemma2}, and we claim that the auxiliary graph satisfies the conditions of the lemma with $U = \A, V = \B, \Delta_V = \dbinom{\frac{n}{2} - r + l}{l}$.
 
