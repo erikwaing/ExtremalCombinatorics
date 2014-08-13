@@ -97,7 +97,7 @@ Fermi Ma\\
 % paper so it must be entirely self-contained.
 
 \begin{abstract}
-  A result of Shagnik Das, Wenying Gan, and Benny Sudakov shows that
+  We know from Sperner's theorem that the biggest antichain for $B_n$ lies in the middle level [Sperner]. Stanley generalized this result for any $B_n/G$ where $G$ is a finite group. Kleitman asked the related question of how to minimize the number of 2-chains for famlies of sets larger than the middle level of $B_n$, and gave a simple algorithm for selecting sets. We generalize this algorithm to $B_n/C_2$ and show that its generalization does not hold for $B_n/G$ for arbritrary $G$ by providing a counterexample.
 
   % keywords are optional
   \bigskip\noindent \textbf{Keywords:} Sperner's Theorem; Group Actions; Minimizing 2-chains\end{abstract}
@@ -153,16 +153,16 @@ Now, let $m = \binom{n-2}{\lfloor n/2 \rfloor -2} + \binom{n-1}{\lfloor n/2 \rfl
 \label{proposition1} For any $s > m$, there exists a family $\F$ of $s$ elements of $B_n / G_{(12)}$ that minimizes the number of 2-chains and is such that if $A \in \F$ is of maximal cardinality, where we write $|A| = \frac{n}{2}+r$, then for any $B \subset A$ with $|B| \geq \frac{n}{2} - r + 1$, $B \in \F$.
 \end{proposition}
 
-\begin{proof} Suppose the proposition is false, and that all families of sets minimizing the number of 2-chains contain some sets of size $\frac{n}{2} + r$ with subsets less than $2r$ levels below not included in the family. Without loss of generality we can say that $r \geq 1$, since otherwise, the statement is trivially true since there is a subset must have smaller size. 
+\begin{proof} Suppose a family of sets minimizing the number of 2-chains contain some sets of size $\frac{n}{2} + r$ with subsets less than $2r$ levels below not included in the family. Without loss of generality we can say that $r \geq 1$, since otherwise, the statement is trivially true since there is no subset with smaller size. 
 
 Let $l \leq 2r-1$ be the smallest integer such that there exists a maximal cardinality set $A$ with a corresponding subset $l$ levels below that is not in $\F$. We define
 \begin{align*}
 \A &= \{A \in F| \lvert a \rvert = \frac{n}{2}+m, \partial^l A \not\subset \F \}\\
 \B &= \partial^l A - \F
 \end{align*}
-Construct a bipartite graph on $\A \cup \B$ with an edge $(A,B)$ iff $B \subset A$. Each edge corresponds to a pair of sets that make the lemma false.
+Construct a bipartite graph $G$ on $\A \cup \B$ with an edge $(A,B)$ iff $B \subset A$. Each edge corresponds to a pair of sets that make the lemma false.
 
-First, consider the case where there exists an injective mapping $M: \A \to \B$. We will show that shifting elements from $\A$ to their corresponding matches in $\B$ will decrease the number of 2-chains, contradicting our assumption that $\F$ minimizes the number of 2-chains.
+First, consider the case where there exists an injective mapping $M: \A \to \B$. We will show that shifting elements from $\A$ to their corresponding matches in $\B$ will shift the elements without increasing the number of 2-chains, and the new transformed $\F$ will satisfy the proposition.
 
 Note that if $C \subset B$ is a newly introduced 2-chain for some $B \in \B$, then $C \subset B \subset A$, so we have lost exactly one 2-chain as well. Therefore, it is sufficient to only consider 2-chains added and removed between the levels $\frac{n}{2} + r$ and $\frac{n}{2} + r - l$ (the levels of $\A$ and $\B$, respectively).
 
@@ -183,16 +183,16 @@ when $l \leq 2m-1$
 \begin{proof}
 Let $L$ be the expression on the left-hand side, and let $R$ be the expression on the right-hand side.
 
-We first compute $L$ by spliting up $A$ in 2 cases:\\
+We first compute $R$ by spliting up $A$ in 2 cases or the number of 2-chains lost:\\
 1. $\{ 1, 2 \} \not\subset A$. In this case, whatever we chose to remove will get us a subset of $A$ that is below it. So the number of 2-chains lost involving this kind of $A$ is
 \[ \sum_{i=1}^{l-1} \dbinom{\frac{n}{2} + m}{i} \]
 2. $\{ 1, 2 \} \subset A$. In this case, it doesn't matter whether we remove $1$ or $2$, so we count the number of sets in the following manner. First, we assume that we remove either 1 or 2 or none. In the other case, we remove 1 and 2.
 \[ \sum_{i=1}^{l-1} \left(\dbinom{\frac{n}{2} + m - 1}{i} + \dbinom{\frac{n}{2}+m-2}{i-2} \right) \]
 So we have computed $L$ to be the sum over all $A \in \A$:
-\[ L = \sum_{\{1, 2\} \not\subset A \in \A} \sum_{i=1}^{l-1} \dbinom{\frac{n}{2} + m}{i} + \sum_{\{1, 2\} \subset A \in \A} \sum_{i=1}^{l-1} \left( \dbinom{\frac{n}{2}+m-1}{i} + \dbinom{\frac{n}{2}+m-2}{i-2}\right) \]
+\[ R = \sum_{\{1, 2\} \not\subset A \in \A} \sum_{i=1}^{l-1} \dbinom{\frac{n}{2} + m}{i} + \sum_{\{1, 2\} \subset A \in \A} \sum_{i=1}^{l-1} \left( \dbinom{\frac{n}{2}+m-1}{i} + \dbinom{\frac{n}{2}+m-2}{i-2}\right) \]
 
-Likewise, we can do the same for $G$, except now we are adding elements from the complements of $M(A)$. We can also assume that everything that we add is in $\F$ in the worst case
-\[ G \leq \sum_{1 \in M(A) \text{ or } 2 \in M(A)} \sum_{i=1}^{l-1} \dbinom{\frac{n}{2}-m+l}{i} + \sum_{1, 2 \notin M(A)} \sum_{i=1}^{l-1} \left( \dbinom{\frac{n}{2}-m+l-1}{i} + \dbinom{\frac{n}{2}-m+l-2}{i-2} \right) \]
+Likewise, we can do the same for $L$, except now we are adding elements from the complements of $M(A)$. We can also assume that everything that we add is in $\F$ in the worst case
+\[ L \leq \sum_{1 \in M(A) \text{ or } 2 \in M(A)} \sum_{i=1}^{l-1} \dbinom{\frac{n}{2}-m+l}{i} + \sum_{1, 2 \notin M(A)} \sum_{i=1}^{l-1} \left( \dbinom{\frac{n}{2}-m+l-1}{i} + \dbinom{\frac{n}{2}-m+l-2}{i-2} \right) \]
 
 We know that $\dbinom{l}{k} > \dbinom{l-1}{k} + \dbinom{l-2}{k-2}$, so in order to show that 
 \[ L \leq R \]
@@ -228,6 +228,11 @@ The number of 2-chains created is exactly $e(\A - \A_1, \B_1)$. Also, we lose th
 So in fact, we can shift these down without gaining any more 2-chains. We can repeat this process finitely many times until the conditions of the lemma are true.
 \end{proof}
 
+==============
+
+I Think I'm happy with stuff until here (without counting the r=1,l=1 case.
+
+==============
 
 \begin{theorem} For any $s \geq m$, let $r \in \frac{1}{2}\mathbb{N}$ be the unique half-integer such that $\sum_{i = \frac{n}{2} - r +1}^{\frac{n}{2} + r -1} |P_i| < s \leq \sum_{i = \frac{n}{2}-r}^{\frac{n}{2}+r}|P_i|$. If a family of subsets $\F$ of $B_n / G_{(12)}$ with $|\F| = s$ satisfies the following properties:
 
@@ -235,9 +240,9 @@ So in fact, we can shift these down without gaining any more 2-chains. We can re
 
 2) For any $A \in B_n / G_{(12)}$ with $n/2 - r + 1 \leq |A| \leq n/2 + r - 1$, we have $A \in \F$.
 
-3) If $s > \sum_{i=\frac{n}{2}-r+1}^{\frac{n}{2}+r}$, then the level $\frac{n}{2}+r$ is full.
+3) If $s > \sum_{i=\frac{n}{2}-r+1}^{\frac{n}{2}+r}$, then the level $\frac{n}{2}+r$ is full. In the $\frac{n}{2}-r$ level, elements without $\{1, 2\}$ are prioretized.
 
-4) If $s \leq \sum_{i=\frac{n}{2}-r+1}^{\frac{n}{2}+r}$, then the level $\frac{n}{2}-r$ is empty.
+4) If $s \leq \sum_{i=\frac{n}{2}-r+1}^{\frac{n}{2}+r}$, then the level $\frac{n}{2}-r$ is empty. In the $\frac{n}{2} + r$ level, elements with $\{1, 2\}$ are prioretized.
 
 then is minimizes the number of 2-chains.
 \end{theorem}
@@ -247,7 +252,16 @@ We prove this with induction on $s$.
 
 For the base case, $s = m$. If $n$ is even and $r = 0$, then $\F$ only has elements from the middle level and [Stanley] tells us that this is minimizing the number of 2-chains. If $n$ is odd and $r = \frac{1}{2}$, then $\F$ has elements from the middle two levels. Property 2 does not mean anything. Property 3 says that level $\lceil \frac{n}{2} \rceil$ is full and level $\lfloor \frac{n}{2} \rfloor$ is empty. [Stanley] tells us that these families minimize the number of 2-chains. 
 
-For the inductive step, assume $s > m$. Apply the transformations necessary to get a family that satisfies Proposition~\ref{proposition1} and minimizes the number of 2-chains. Suppose this family does not satisfy Property 1. Since $\F$ and $\F' = \{ [n] - F | F \in \F \}$ are involved in the same number of 2-chains, we can assume that the largest element $F \in \F$ has $|F| = \frac{n}{2} + t$ where $t > r$. Then from Proposition~\ref{proposition1}, we know that every $G \subset F$, where $|G| \geq \frac{n}{2}-t+1$, we have $G \in \F$. So $F$ is involved in at least
+For the inductive step, assume a family $\F$ of $s > m$ sets. Apply the transformations necessary to get a family that satisfies Proposition~\ref{proposition1} and minimizes the number of 2-chains. Suppose this family does not satisfy Property 1. Since $\F$ and $\F' = \{ [n] - F | F \in \F \}$ are involved in the same number of 2-chains, we can assume that the largest element $F \in \F$ has $|F| = \frac{n}{2} + t$ where $t > r$. 
+
+We separate the claim into two cases:
+
+\begin{itemize}
+\item Case 1: $\{1, 2\} \subset F$.
+\item Case 2: $\{ 1, 2\} \not\subset F$.
+\end{itemize}
+
+Then from Proposition~\ref{proposition1}, we know that every $G \subset F$, where $|G| \geq \frac{n}{2}-t+1$, we have $G \in \F$. So $F$ is involved in at least
 \[ \sum_{i=1}^{2t-1} \dbinom{\frac{n}{2}+t - 1}{i} + \dbinom{\frac{n}{2}+t-2}{i-2}\]
 2-chains. 
 
