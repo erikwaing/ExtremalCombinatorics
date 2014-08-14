@@ -147,7 +147,7 @@ The following Lemma is due to [Das]. We restate it here for clarity, but an inte
 Let $G$ be a bipartite graph on $U \cup V$ with minimum degree $\delta_U \geq 1$ in $U$ and maximum degree $\Delta_V$ in $V$. Suppose there is no matching from $U$ to $V$. Then there exist nonempty subsets $U_1 \subset U$ and $V_1 \subset V$ with a perfect matching $M: U_1 \to V_1$ and $e(U_1,V) + e(U \setminus U_1,V_1) \leq |U_1| \Delta_V$.
 \end{lemma}
 
-Now, let $m = \binom{n-2}{\lfloor n/2 \rfloor -2} + \binom{n-1}{\lfloor n/2 \rfloor}$, this represents the size of the middle level.
+Now, let $m = \binom{n-2}{\lfloor n/2 \rfloor -2} + \binom{n-1}{\lfloor n/2 \rfloor}$, this represents the size of the middle level. The following proposition will give a way to transform a family of sets minimizing the number of 2-chains into another family of sets minimizing the number of 2-chains. 
 
 \begin{proposition}
 \label{proposition1} For any $s > m$, there exists a family $\F$ of $s$ elements of $B_n / G_{(12)}$ that minimizes the number of 2-chains and is such that if $A \in \F$ is of maximal cardinality, where we write $|A| = \frac{n}{2}+r$, then for any $B \subset A$ with $|B| \geq \frac{n}{2} - r + 1$, $B \in \F$.
@@ -226,11 +226,34 @@ The number of 2-chains created is exactly $e(\A - \A_1, \B_1)$. Also, we lose th
 So in fact, we can shift these down without gaining any more 2-chains. We can repeat this process finitely many times until the conditions of the lemma are true.
 \end{proof}
 
-==============
 
-I Think I'm happy with stuff until here (without counting the r=1,l=1 case.
+%
+%	Here begins comment of proposition 2.
+%	It will make it super easy to prove Property 2 of the theorem I think.
+%	Have yet to make it work, although I believe it comes down to algebra.
+%
+%
+\begin{comment}
 
-==============
+\begin{proposition}
+\label{proposition2}
+Suppose we have a family of sets satisfying the properties of Proposition~\ref{proposition1} and with elements lying between levels $\frac{n}{2}\pm r$, then we can always move elements from the top level ($\frac{n}{2}+r$) into a middle level ($\frac{n}{2} + r - l$, where $1 \leq l \leq 2r-1$) without adding more 2-chains. 
+\end{proposition}
+
+\begin{proof}
+Lets just shift an element from the $\frac{n}{2} + r$ level into a middle level and count the number of 2-chains added and subtracted. 
+
+By removing the top level element, we have removed at least
+\[ \sum_{i=1}^{2r-1} \dbinom{\frac{n}{2} +r-1}{i-1} + \dbinom{\frac{n}{2} + r-2}{i-2} \]
+and have added at most
+\[ \sum_{i=1}^l \dbinom{\frac{n}{2}-r+l}{i} + \sum_{i=1}^{2r-l} \dbinom{\frac{n}{2}+r-l}{i} \]
+So in total, we have removed 
+\[ \sum_{i=1}^{2r-1} \left(\dbinom{\frac{n}{2} +r-1}{i-1} + \dbinom{\frac{n}{2} + r-2}{i-2}\right) - \sum_{i=1}^l \dbinom{\frac{n}{2}-r+l}{i} - \sum_{i=1}^{2r-l} \dbinom{\frac{n}{2}+r-l}{i}\]
+\[ = \sum_{i=1}^{2r-l} \left(\dbinom{\frac{n}{2}+r-1}{i-1} + \dbinom{\frac{n}{2}+r-2}{i-2} - \dbinom{\frac{n}{2} + r - l}{i} \right) - \sum_{i=1}^l \dbinom{\frac{n}{2}-r+l}{i} + \sum_{i=2r-l+1}^{2r-1} \left(\dbinom{\frac{n}{2}+r-1}{i-1} + \dbinom{\frac{n}{2}+r-2}{i-2} \right)\]
+
+\end{proof}
+
+\end{comment}
 
 \begin{theorem} For any $s \geq m$, let $r \in \frac{1}{2}\mathbb{N}$ be the unique half-integer such that $\sum_{i = \frac{n}{2} - r +1}^{\frac{n}{2} + r -1} |P_i| < s \leq \sum_{i = \frac{n}{2}-r}^{\frac{n}{2}+r}|P_i|$. If a family of subsets $\F$ of $B_n / G_{(12)}$ with $|\F| = s$ satisfies the following properties:
 
@@ -238,11 +261,16 @@ I Think I'm happy with stuff until here (without counting the r=1,l=1 case.
 
 2) For any $A \in B_n / G_{(12)}$ with $n/2 - r + 1 \leq |A| \leq n/2 + r - 1$, we have $A \in \F$.
 
-3) If $s > \sum_{i=\frac{n}{2}-r+1}^{\frac{n}{2}+r}$, then the level $\frac{n}{2}+r$ is full. In the $\frac{n}{2}-r$ level, elements without $\{1, 2\}$ are prioretized.
+%
+%	Unsure about these next two....
+%
+%
 
-4) If $s \leq \sum_{i=\frac{n}{2}-r+1}^{\frac{n}{2}+r}$, then the level $\frac{n}{2}-r$ is empty. In the $\frac{n}{2} + r$ level, elements with $\{1, 2\}$ are prioretized.
+3) If $s > \sum_{i=\frac{n}{2}-r+1}^{\frac{n}{2}+r}$, then the level $\frac{n}{2}+r$ is full. In the $\frac{n}{2}-r$ level, elements without $\{1, 2\}$ are prioritized.
 
-then is minimizes the number of 2-chains.
+4) If $s \leq \sum_{i=\frac{n}{2}-r+1}^{\frac{n}{2}+r}$, then the level $\frac{n}{2}-r$ is empty. In the $\frac{n}{2} + r$ level, elements with $\{1, 2\}$ are prioritized.
+
+then it minimizes the number of 2-chains.
 \end{theorem}
 
 \begin{proof}
@@ -250,22 +278,36 @@ We prove this with induction on $s$.
 
 For the base case, $s = m$. If $n$ is even and $r = 0$, then $\F$ only has elements from the middle level and [Stanley] tells us that this is minimizing the number of 2-chains. If $n$ is odd and $r = \frac{1}{2}$, then $\F$ has elements from the middle two levels. Property 2 does not mean anything. Property 3 says that level $\lceil \frac{n}{2} \rceil$ is full and level $\lfloor \frac{n}{2} \rfloor$ is empty. [Stanley] tells us that these families minimize the number of 2-chains. 
 
-For the inductive step, assume a family $\F$ of $s > m$ sets. Apply the transformations necessary to get a family that satisfies Proposition~\ref{proposition1} and minimizes the number of 2-chains. Suppose this family does not satisfy Property 1. Since $\F$ and $\F' = \{ [n] - F | F \in \F \}$ are involved in the same number of 2-chains, we can assume that the largest element $F \in \F$ has $|F| = \frac{n}{2} + t$ where $t > r$. 
+For the inductive step, take a family of sets $\F_0$ with $s-1$ elements that satisfies the properties and thus minimizes the number of 2-chains for $s-1$ elements. First, we analyze the case where the $\frac{n}{2}+r$ level is not full, so we add a set $F_0$ to the level $\frac{n}{2} + r$. Note that $\F_0 \cup \{F_0\}$ still satisfies properties 1 through 4.
+
+We will assume that there exists a different family with fewer 2-chains and show that if one of the properties is broken, there isn't less 2-chains than in $\F_0 \cup \{ F_0\}$. Therefore, this will show that there exists a family of sets which satisfies the above properties and minimzes the number of 2-chains. However, all the families of sets satisfying these properties are the symmetric. Which will give us the theorem.
 
 We separate the claim into two cases:
 
 \begin{itemize}
-\item Case 1: $\{1, 2\} \subset F$.
-\item Case 2: $\{ 1, 2\} \not\subset F$.
+\item Case 1: $\{1, 2\} \subset F_0$.
+\item Case 2: $\{ 1, 2\} \not\subset F_0$.
 \end{itemize}
+
+Now suppose a family $\F$ of $s > m$ sets that has fewer 2-chains than $\F_0 \cup \{F_0\}$. Apply the transformations necessary to get a family that satisfies Proposition~\ref{proposition1} and minimizes the number of 2-chains. Suppose this family does not satisfy Property 1. Since $\F$ and $\F' = \{ [n] - F | F \in \F \}$ are involved in the same number of 2-chains, we can assume that the largest element $F \in \F$ has $|F| = \frac{n}{2} + t$ where $t > r$. 
 
 Then from Proposition~\ref{proposition1}, we know that every $G \subset F$, where $|G| \geq \frac{n}{2}-t+1$, we have $G \in \F$. So $F$ is involved in at least
 \[ \sum_{i=1}^{2t-1} \dbinom{\frac{n}{2}+t - 1}{i} + \dbinom{\frac{n}{2}+t-2}{i-2}\]
-2-chains. 
+2-chains. So there are at least $c_2(n, s-1) + \sum_{i=1}^{2t-1} \dbinom{\frac{n}{2}+t - 1}{i} + \dbinom{\frac{n}{2}+t-2}{i-2}$ 2-chains in $\F$, but since we assumed that $\F_0$ was optimal for $s-1$ elements, we know that $\F_0 \cup \{F_0\}$ has at most
+\[ c_2(n, s-1) + \sum_{i=1}^{2r-1} \dbinom{\frac{n}{2}+r - 1}{i} + \dbinom{\frac{n}{2}+r-2}{i-2} \]
+2-chains since the $\frac{n}{2}-r$ level is empty andwe are dealing with Case 1. Since $t > r$, we know that $\F$ has more 2-chains than $\F_0$, which means that $\F$ must satisfy Property 1.
 
-To see why it satisfies property 1, suppose for the sake of contradiction that it does not. By a symmetry argument, this implies that there is some maximal cardinality $G \in \F$ with size $|G| = \frac{n}{2} + t$ where $t > r$. The proposition tells us that $G$ is a member of SOME LARGE NUMBER of 2-chains. If we consider $\F \setminus \{G\}$, we note that this has at least $c_2(n,s-1)$ 2-chains in $\F$ not involving $G$. Thus, the number of 2-chains in $\F$ is at least $c_2(n,s-1) + $ LARGE NUMBER, which is strictly greater than $c_2(n,s)$ because we could just add a subset of size $\frac{n}{2} + r$ that would add fewer 2-chains.
+So now suppose $\F$ satisfies property 1 but not property 2. Then in light of property 1, we know that $\F$ has some element in level $\frac{n}{2} \pm r$, and again by symmetry, we can assume that it is in level $\frac{n}{2} + r$ by taking complements. Therefore, we know that $\F$ is involved in at least 
+\[ c_2(n, s-1) + \sum_{i=1}^{2r-1} \dbinom{\frac{n}{2}+r - 1}{i} + \dbinom{\frac{n}{2}+r-2}{i-2} \]
+and thus doesn't have less 2-chains. 
 
-To see why it satisfies property 2, consider two separate cases. 
+Now we can analyze Case 2, where $\{ 1, 2\} \not\subset F_0$. In this case, if we have family $\F$ with less 2-chains which broke property 1, we would have an element with a set in a level $t > r$ and so $\F$ would have at least
+\[ c_2(n, s-1) + \sum_{i=1}^{2t-1} \dbinom{\frac{n}{2}+t-1}{i} + \dbinom{\frac{n}{2}+t-2}{i-2} \]
+But we know that $\F_0 \cup \{ F_0\}$ has at most
+\[ c_2(n,s-1) + \sum_{i=1}^{2r} \dbinom{\frac{n}{2}+r}{i} \]
+which is not more than the number of 2-chains in $\F$ since $t \geq r + 1$. So we get Property 1 in this Case 2 as well. 
+
+Suppose $\F$ satisfied property 1 but not property 2, then we know that there is an element in level $\frac{n}{2} \pm r$ and an element missing inside in level $\frac{n}{2}+r-l$. We can move the elements down via Proposition~\ref{proposition2}. Until we get property 2. 
 
 \end{proof}
 
