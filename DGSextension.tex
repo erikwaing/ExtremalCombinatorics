@@ -153,16 +153,19 @@ Now, let $m = \binom{n-2}{\lfloor n/2 \rfloor -2} + \binom{n-1}{\lfloor n/2 \rfl
 \label{proposition1} For any $s > m$, there exists a family $\F$ of $s$ elements of $B_n / G_{(12)}$ that minimizes the number of 2-chains and is such that if $A \in \F$ is of maximal cardinality, where we write $|A| = \frac{n}{2}+r$, then for any $B \subset A$ with $|B| \geq \frac{n}{2} - r + 1$, $B \in \F$.
 \end{proposition}
 
-\begin{proof} Suppose a family of sets minimizing the number of 2-chains contain some sets of size $\frac{n}{2} + r$ with subsets less than $2r$ levels below not included in the family. Without loss of generality we can say that $r \geq 1$, since otherwise, the statement is trivially true since there is no subset with smaller size. 
+\begin{proof} 
+Suppose a family of sets minimizing the number of 2-chains contain some sets of size $\frac{n}{2} + r$ with subsets less than $2r$ levels below not included in the family. Without loss of generality we can say that $r \geq 1$, since otherwise, the statement is trivially true since there is no subset with smaller size. 
 
 Let $l \leq 2r-1$ be the smallest integer such that there exists a maximal cardinality set $A$ with a corresponding subset $l$ levels below that is not in $\F$. We define
 \begin{align*}
 \A &= \{A \in F| \lvert a \rvert = \frac{n}{2}+m, \partial^l A \not\subset \F \}\\
 \B &= \partial^l A - \F
 \end{align*}
+The proof will give a procedure by which to either decrease $|\A|$, decrease $r$ or increase $l$. Since $l \leq 2r-1$ and $r\geq 1$ and $|\A|>0$, this procedure will eventually terminate with a family satisfying the properties of the proposition.
+
 Construct a bipartite graph $G$ on $\A \cup \B$ with an edge $(A,B)$ iff $B \subset A$. Each edge corresponds to a pair of sets that make the lemma false.
 
-First, consider the case where there exists an injective mapping $M: \A \to \B$. We will show that shifting elements from $\A$ to their corresponding matches in $\B$ will shift the elements without increasing the number of 2-chains, and the new transformed $\F$ will satisfy the proposition.
+First, consider the case where there exists an injective mapping $M: \A \to \B$. We will show that shifting elements from $\A$ to their corresponding matches in $\B$ will shift the elements without increasing the number of 2-chains.
 
 Note that if $C \subset B$ is a newly introduced 2-chain for some $B \in \B$, then $C \subset B \subset A$, so we have lost exactly one 2-chain as well. Therefore, it is sufficient to only consider 2-chains added and removed between the levels $\frac{n}{2} + r$ and $\frac{n}{2} + r - l$ (the levels of $\A$ and $\B$, respectively).
 
@@ -177,7 +180,7 @@ Where $U^i(B)$ is the set of supersets of $B$ with $i$ more elements.
 \begin{lemma} 
 \label{lemma1}
 \[ \sum_{A\in \A}\sum_{i = 1}^{l-1} |U^i(M(A)) \cap \F| \leq \sum_{A \in \A}\sum_{i = 1}^{l-1} |\partial^i A | \]
-when $l \leq 2m-1$
+when $l \leq 2r-1$
 \end{lemma}
 
 \begin{proof}
@@ -185,45 +188,79 @@ Let $L$ be the expression on the left-hand side, and let $R$ be the expression o
 
 We first compute $R$ by spliting up $A$ in 2 cases or the number of 2-chains lost:\\
 1. $\{ 1, 2 \} \not\subset A$. In this case, whatever we chose to remove will get us a subset of $A$ that is below it. So the number of 2-chains lost involving this kind of $A$ is
-\[ \sum_{i=1}^{l-1} \dbinom{\frac{n}{2} + m}{i} \]
+\[ \sum_{i=1}^{l-1} \dbinom{\frac{n}{2} + r}{i} \]
 2. $\{ 1, 2 \} \subset A$. In this case, it doesn't matter whether we remove $1$ or $2$, so we count the number of sets in the following manner. First, we assume that we remove either 1 or 2 or none. In the other case, we remove 1 and 2.
-\[ \sum_{i=1}^{l-1} \left(\dbinom{\frac{n}{2} + m - 1}{i} + \dbinom{\frac{n}{2}+m-2}{i-2} \right) \]
+\[ \sum_{i=1}^{l-1} \left(\dbinom{\frac{n}{2} + r - 1}{i} + \dbinom{\frac{n}{2}+r-2}{i-2} \right) \]
 So we have computed $R$ to be the sum over all $A \in \A$:
-\[ R = \sum_{\{1, 2\} \not\subset A \in \A} \sum_{i=1}^{l-1} \dbinom{\frac{n}{2} + m}{i} + \sum_{\{1, 2\} \subset A \in \A} \sum_{i=1}^{l-1} \left( \dbinom{\frac{n}{2}+m-1}{i} + \dbinom{\frac{n}{2}+m-2}{i-2}\right) \]
+\[ R = \sum_{\{1, 2\} \not\subset A \in \A} \sum_{i=1}^{l-1} \dbinom{\frac{n}{2} + r}{i} + \sum_{\{1, 2\} \subset A \in \A} \sum_{i=1}^{l-1} \left( \dbinom{\frac{n}{2}+r-1}{i} + \dbinom{\frac{n}{2}+r-2}{i-2}\right) \]
 
 Likewise, we can do the same for $L$, except now we are adding elements from the complements of $M(A)$. We can also assume that everything that we add is in $\F$ in the worst case
-\[ L \leq \sum_{1 \in M(A) \text{ or } 2 \in M(A)} \sum_{i=1}^{l-1} \dbinom{\frac{n}{2}-m+l}{i} + \sum_{1, 2 \notin M(A)} \sum_{i=1}^{l-1} \left( \dbinom{\frac{n}{2}-m+l-1}{i} + \dbinom{\frac{n}{2}-m+l-2}{i-2} \right) \]
+\[ L \leq \sum_{1 \in M(A) \text{ or } 2 \in M(A)} \sum_{i=1}^{l-1} \dbinom{\frac{n}{2}-r+l}{i} + \sum_{1, 2 \notin M(A)} \sum_{i=1}^{l-1} \left( \dbinom{\frac{n}{2}-r+l-1}{i} + \dbinom{\frac{n}{2}-r+l-2}{i-2} \right) \]
 
 We know that $\dbinom{l}{k} > \dbinom{l-1}{k} + \dbinom{l-2}{k-2}$, so in order to show that 
 \[ L \leq R \]
 it sufficies to show that
-\[ \dbinom{\frac{n}{2}-m+l}{i} \leq \dbinom{\frac{n}{2}+m-1}{i} + \dbinom{\frac{n}{2}+m-2}{i-2} \]
-Which is true, since $l \leq 2m-1$.
+\[ \dbinom{\frac{n}{2}-r+l}{i} \leq \dbinom{\frac{n}{2}+r-1}{i} + \dbinom{\frac{n}{2}+r-2}{i-2} \]
+Which is true, since $l \leq 2r-1$.
 \end{proof}
 
 This reduces the problem to the case where $l=1$. So we have at least one missing subset one level below $A$. If there was another set $D \subset A$ where $|D| = |M(A)|$ but $D \in \F$. Then we lose the 2-chain $D \subset A$ and gain no other 2-chains. So we might as well shift all the elements and assume that $\partial \A = \B$. 
 
-We now show that this means that the sets $A \in \A$ cannot be involved in any 2-chains in $\F$. Suppose that there existed a 2-chain with $C \subset A$, and $x \in C$. Then we shift $A$ to $A - \{ x \}$ which is in $\B$ (because $\partial \A = \B$). We also shift the remaining sets in $\A$ by an arbitrary matching from $\A - \{ A \}$ to $\B' = \partial A - \{ A - \{x\} \}$. Note that this matching surely exists by Phillip Hall's Theorem. 
+So if we shift according to the injective map, we will not increase the number of 2-chains, since the only 2-chains relevant are those between levels of $\A$ and $\B$. If we added a 2-chain, then we had something in level $\frac{n}{2} + r$ that should have been included in $\A$ but was not.
+
+\begin{comment}
+%
+%
+%   I don't see how this is relevant
+%
+%
+First, assume that $r \geq \frac{3}{2}$.
+We now show that this means that the sets $A \in \A$ cannot be involved in any 2-chains in $\F$. Once we know that the sets in $\A$ are not involved in any 2-chains, it will allow us to shift them one level down without gaining any 2-chains. Note that if we did increase the number of 2-chains by this switch, it must have been with elements from level $\frac{n}{2}+r$, but these would have been involved in the shift down.
+
+Suppose that there existed a 2-chain with $C \subset A$, and $x \in C$. Then we shift $A$ to $A - \{ x \}$ which is in $\B$ (because $\partial \A = \B$). We also shift the remaining sets in $\A$ by an arbitrary matching from $\A - \{ A \}$ to $\B' = \partial A - \{ A - \{x\} \}$. Note that this matching surely exists by Phillip Hall's Theorem. 
 
 If $X \subset \A - \{ A \}$, then each element in $X$ has at least $\frac{n}{2} + r - 2$ outgoing edges (minus 1 for if it landed on $A - \{x\}$, and minus 1 if 1 and 2 are in the set). Furthermore, each element $B \in \B'$ has at most $\frac{n}{2} - r + 1$ outgoing edges. So if $U \subset X$, and we let $E$ be the number of edges,
 \[ |U|*(\frac{n}{2}+r-2) = E \leq (\frac{n}{2}-r+1)|N(U)| \]
-So $\dfrac{\frac{n}{2}+r-2}{\frac{n}{2}-r+1} \geq 1$ when $r \geq \frac{3}{2}$ and in this case we can apply Phillip Hall's Theorem. 
+So $\dfrac{\frac{n}{2}+r-2}{\frac{n}{2}-r+1} \geq 1$ and since $r \geq \frac{3}{2}$ and in this case we can apply Phillip Hall's Theorem. 
+\end{comment}
 
+\begin{comment}
+%
+%
+% I think this is irrelevant now too.
+%
+%
 When $r =1$, the same shift strategy works. Suppose $|\B| = k$. So when we shift out the elements in $\A$, we lose at least $k(\frac{n}{2}) - E(M)$ 2-chains, where $E(M)$ is the total number of edges between all the sets included in the matching. The $\frac{n}{2}$ comes from the fact that for each element in $\A$, it is involved in at least $\frac{n}{2}$ 2-chains (not yet accounting for overcounting). When we shift in the elements from $\B$, we gain at most $k(\frac{n}{2}) - E(M)$ 2-chains, since for each element shifted in, it can be involed in at most $\frac{n}{2}$ 2-chains, and we must subtract $E(M)$ to account for overcounting.
 
-In the shifted set, we have lost the 2-chain $C \subset A$ and gained no intermediate 2-chains. So the shifted set has fewer 2-chains. Therefore, the sets in $\A$ cannot be part of any 2-chains. So the shifted set to $\partial \A$ will not be in any 2-chains. Since $|\F|$ is greater than the middle level, we know that there is some 2-chain, suppose it is $C \subset D$. So we can additionally shift $D$ to some element in $\partial \A$ - we need to make sure there is an extra spot. We know this is true since $|\partial \A| > |\A|$ for $r \geq 1$. This is because each set $A \in \A$ has at least $\frac{n}{2}+r-1$ outgoing edges and each $B \in \partial \A$ has at most $\frac{n}{2}-r+1$ outgoing edges; similarly to before, $\dfrac{\frac{n}{2}+r-1}{\frac{n}{2}-r+1} > 1$ when $r \geq \frac{3}{2}$. 
+In the shifted set, we have lost the 2-chain $C \subset A$ and gained no intermediate 2-chains. So the shifted set has fewer 2-chains. Therefore, the sets in $\A$ cannot be part of any 2-chains. So the shifted set to $\partial \A$ will not be in any 2-chains. 
+\end{comment}
 
-So we lose a 2-chain and not gain any. 
+\begin{comment}
+%
+%
+%   I don't think this is relevant.
+%
+%
+Since $|\F|$ is greater than the middle level, we know that there is some 2-chain, suppose it is $C \subset D$. So we can additionally shift $D$ to some element in $\partial \A$. We know there is an available since $|\partial \A| > |\A|$ for $r \geq 1$. This is because each set $A \in \A$ has at least $\frac{n}{2}+r-1$ outgoing edges and each $B \in \partial \A$ has at most $\frac{n}{2}-r+1$ outgoing edges; similarly to before, $\dfrac{\frac{n}{2}+r-1}{\frac{n}{2}-r+1} > 1$ when $r \geq \frac{3}{2}$. 
+\end{comment}
 
 Now we assume that there is no injective map from $\A \rightarrow \B$.
 
 We use Lemma~\ref{lemma2}, and we claim that the auxiliary graph satisfies the conditions of the lemma with $U = \A, V = \B, \Delta_V = \dbinom{\frac{n}{2} - r + l}{l}$.
 
-So we get subsets $\A_1 \subset \A$ and $\B_1 \subset \B$, along with $M:\A_1 \rightarrow \B_1$. We get $\tilde{\F}$ by shifting the elements from $\A_1$ to $\B_1$; since $M(A) \subset A$ (this is the same it says in Sudakov's paper), we only need to consider intermediate chains. Since $r \geq 1$, the same calculation yields that we decrease the number of 2-chains. So we only need to consider the 2-chains destroyed and created between $\A$ and $\B$, or levels $\frac{n}{2} + r$ and $\frac{n}{2} + r - l$.
+So we get subsets $\A_1 \subset \A$ and $\B_1 \subset \B$, along with $M:\A_1 \rightarrow \B_1$. We get $\tilde{\F}$ by shifting the elements from $\A_1$ to $\B_1$; since $M(A) \subset A$ (this is the same it says in Sudakov's paper), we only need to consider intermediate chains. Since $r \geq 1$, the same calculation from Lemma~\ref{lemma1} yields that we decrease the number of 2-chains. So we only need to consider the 2-chains destroyed and created between $\A$ and $\B$, or levels $\frac{n}{2} + r$ and $\frac{n}{2} + r - l$.
 
 The number of 2-chains created is exactly $e(\A - \A_1, \B_1)$. Also, we lose the chains between $\A_1$ and $\partial^l\A_1 \cap \F = \partial^l\A_1 - \B$. We are losing at least
 \[ |\A_1|\dbinom{\frac{n}{2}+m-1}{l} - e(\A_1, \B) \geq |\A_1|\dbinom{\frac{n}{2} - m + l}{l} - e(\A_1, \B) \geq e(\A - \A_1, \B_1) \] 
-So in fact, we can shift these down without gaining any more 2-chains. We can repeat this process finitely many times until the conditions of the lemma are true.
+So in fact, we can shift these down without gaining any more 2-chains.
+\end{proof}
+
+\begin{corollary}
+There exists a family of $s > m$ subsets satisfying the properties in Proposition~\ref{proposition1} and is such taht if $A \in \F$ is of minimal cardinality, where we write $|A|=\frac{n}{2}-r$, then for any $A \subset B$ with $|B| \leq \frac{n}{2}+r-1$, $B \in \F$
+\end{corollary}
+
+\begin{proof}
+Once we have a family satisfying Proposition~\ref{proposition1}, we can take complements and apply the same transformation as in the proof of Proposition~\ref{proposition1}.
 \end{proof}
 
 \begin{proposition}
@@ -237,11 +274,16 @@ Lets just shift an element from the $\frac{n}{2} + r$ level into a middle level 
 By removing the top level element, we have removed at least
 \[ \sum_{i=1}^{2r-1} \dbinom{\frac{n}{2} +r-1}{i} + \dbinom{\frac{n}{2} + r-2}{i-2} \]
 and have added at most
-\[ \sum_{i=1}^l \dbinom{\frac{n}{2}-r+l}{i} + \sum_{i=1}^{2r-l} \dbinom{\frac{n}{2}+r-l}{i} \]
-So in total, we have removed 
-\[ \sum_{i=1}^{2r-1} \left(\dbinom{\frac{n}{2} +r-1}{i-1} + \dbinom{\frac{n}{2} + r-2}{i-2}\right) - \sum_{i=1}^l \dbinom{\frac{n}{2}-r+l}{i} - \sum_{i=1}^{2r-l} \dbinom{\frac{n}{2}+r-l}{i}\]
-\[ = \sum_{i=1}^{2r-l} \left(\dbinom{\frac{n}{2}+r-1}{i-1} + \dbinom{\frac{n}{2}+r-2}{i-2} - \dbinom{\frac{n}{2} + r - l}{i} \right) - \sum_{i=1}^l \dbinom{\frac{n}{2}-r+l}{i} + \sum_{i=2r-l+1}^{2r-1} \left(\dbinom{\frac{n}{2}+r-1}{i-1} + \dbinom{\frac{n}{2}+r-2}{i-2} \right)\]
+\[ \sum_{i=1}^{l-1}\dbinom{\frac{n}{2}-r + l}{i} \sum_{i=1}^{2r-l} \dbinom{\frac{n}{2}+r-l}{i} \]
+Note that we couldn't have added elements on top since by property 1, they were not included.
 
+So the net total reduction in 2-chains is at least
+\[ \sum_{i=1}^{2r-1} \dbinom{\frac{n}{2}+r-2}{i-2} + \sum_{i=2r-l+1}^{2r-1} \dbinom{\frac{n}{2}+r-1}{i} - \sum_{i=1}^{l-1} \dbinom{\frac{n}{2}-r+l}{i}\]
+\[ \geq \sum_{i=1}^{l-1} \dbinom{\frac{n}{2}+r-1}{2r-i} - \dbinom{\frac{n}{2}-r+l}{i} \]
+\[ \geq \sum_{i=1}^{l-1} \dbinom{\frac{n}{2}+r-1}{\frac{n}{2}-r-1+i} - \dbinom{\frac{n}{2}+r-1}{i} \geq 0 \]
+To see this, it is easy to see that the sum of the first $l-1$ binomial coefficients will be at most the sum of the $l-1$ binomial coefficients starting at the $i$th coefficient.
+
+Therefore, we can always move the elements from level $\frac{n}{2}+r$ to some missing spots in the middle without adding 2-chains. 
 \end{proof}
 
 \begin{theorem} For any $s \geq m$, let $r \in \frac{1}{2}\mathbb{N}$ be the unique half-integer such that $\sum_{i = \frac{n}{2} - r +1}^{\frac{n}{2} + r -1} |P_i| < s \leq \sum_{i = \frac{n}{2}-r}^{\frac{n}{2}+r}|P_i|$. There exists a family of subsets $\F$ of $B_n / G_{(12)}$ with $|\F| = s$ minimizing the number of 2-chains satisfying the following properties:
