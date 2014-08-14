@@ -209,7 +209,7 @@ If $X \subset \A - \{ A \}$, then each element in $X$ has at least $\frac{n}{2} 
 \[ |U|*(\frac{n}{2}+r-2) = E \leq (\frac{n}{2}-r+1)|N(U)| \]
 So $\dfrac{\frac{n}{2}+r-2}{\frac{n}{2}-r+1} \geq 1$ when $r \geq \frac{3}{2}$ and in this case we can apply Phillip Hall's Theorem. 
 
-Need to confirm for when $r = 1$!!
+When $r =1$, the same shift strategy works. Suppose $|\B| = k$. So when we shift out the elements in $\A$, we lose at least $k(\frac{n}{2}) - E(M)$ 2-chains, where $E(M)$ is the total number of edges between all the sets included in the matching. The $\frac{n}{2}$ comes from the fact that for each element in $\A$, it is involved in at least $\frac{n}{2}$ 2-chains (not yet accounting for overcounting). When we shift in the elements from $\B$, we gain at most $k(\frac{n}{2}) - E(M)$ 2-chains, since for each element shifted in, it can be involed in at most $\frac{n}{2}$ 2-chains, and we must subtract $E(M)$ to account for overcounting.
 
 In the shifted set, we have lost the 2-chain $C \subset A$ and gained no intermediate 2-chains. So the shifted set has fewer 2-chains. Therefore, the sets in $\A$ cannot be part of any 2-chains. So the shifted set to $\partial \A$ will not be in any 2-chains. Since $|\F|$ is greater than the middle level, we know that there is some 2-chain, suppose it is $C \subset D$. So we can additionally shift $D$ to some element in $\partial \A$ - we need to make sure there is an extra spot. We know this is true since $|\partial \A| > |\A|$ for $r \geq 1$. This is because each set $A \in \A$ has at least $\frac{n}{2}+r-1$ outgoing edges and each $B \in \partial \A$ has at most $\frac{n}{2}-r+1$ outgoing edges; similarly to before, $\dfrac{\frac{n}{2}+r-1}{\frac{n}{2}-r+1} > 1$ when $r \geq \frac{3}{2}$. 
 
