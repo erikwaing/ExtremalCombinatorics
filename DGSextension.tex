@@ -281,15 +281,15 @@ Suppose we have a family of sets satisfying the properties of Corollary~\ref{cor
 Lets just shift an element from the $\frac{n}{2} + r$ level into a middle level and count the number of 2-chains added and subtracted. 
 
 By removing the top level element, we have removed at least
-\[ \sum_{i=1}^{2r-1} \dbinom{\frac{n}{2} +r-1}{i} + \dbinom{\frac{n}{2} + r-2}{i-2} \]
+\[ \sum_{i=1}^{2r-1} \left(\dbinom{\frac{n}{2} +r-1}{i} + \dbinom{\frac{n}{2} + r-2}{i-2}\right) \]
 and have added at most
 \[ \sum_{i=1}^{l-1}\dbinom{\frac{n}{2}-r + l}{i} + \sum_{i=1}^{2r-l} \dbinom{\frac{n}{2}+r-l}{i} \]
 Note that we couldn't have added elements on top since by property 1, they were not included.
 
-So the net total reduction in 2-chains is at least
+We upper bound terms of the form $\binom{\frac{n}{2}+r-l}{i}$ with $\binom{\frac{n}{2}+r-1}{i}$, so the net total reduction in 2-chains is at least
 \[ \sum_{i=1}^{2r-1} \dbinom{\frac{n}{2}+r-2}{i-2} + \sum_{i=2r-l+1}^{2r-1} \dbinom{\frac{n}{2}+r-1}{i} - \sum_{i=1}^{l-1} \dbinom{\frac{n}{2}-r+l}{i}\]
-\[ \geq \sum_{i=1}^{l-1} \dbinom{\frac{n}{2}+r-1}{2r-i} - \dbinom{\frac{n}{2}-r+l}{i} \]
-\[ \geq \sum_{i=1}^{l-1} \dbinom{\frac{n}{2}+r-1}{\frac{n}{2}-r-1+i} - \dbinom{\frac{n}{2}+r-1}{i} \geq 0 \]
+\[ \geq \sum_{i=1}^{l-1} \left(\dbinom{\frac{n}{2}+r-1}{2r-i} - \dbinom{\frac{n}{2}-r+l}{i}\right) \]
+\[ \geq \sum_{i=1}^{l-1} \left(\dbinom{\frac{n}{2}+r-1}{\frac{n}{2}-r-1+i} - \dbinom{\frac{n}{2}+r-1}{i}\right) \geq 0 \]
 To see this, it is easy to see that the sum of the first $l-1$ binomial coefficients will be at most the sum of the $l-1$ binomial coefficients starting at the $i$th coefficient.
 
 Therefore, we can always move the elements from level $\frac{n}{2}+r$ to some missing spots in the middle without adding 2-chains. 
