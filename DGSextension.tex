@@ -119,6 +119,8 @@ Let the $l$th \emph{level} of $B_n$ or $B_n / G$ refer to all the elements of ca
 
 Definte the $\ell$-shadow of a family by $\partial^{\ell}\F = \{G: \exists F \in \F, G \in F, |G| = |F| - \ell\}$. This notation is due to [Das].
 
+We define $U^i(S)$ for $S \in B_n$ to be the set of supersets of $S$ in $B_n$ with exactly $|S| + i$ elements.
+
 We also define an ordering on all the elements in $B_n$ or $B_n/ G$. Order the levels so that the middle level comes first, followed by the level above, then the level below the middle, then the level above, etc. Within each level, order the elements arbitrarily. We let $l_r$ be the first $r$ elements in this ordering. 
 
 
@@ -145,30 +147,30 @@ The following proposition gives a way to transform a family of sets minimizing t
 \end{proposition}
 
 \begin{proof} 
-Suppose a family of sets minimizing the number of 2-chains contain some sets of size $\frac{n}{2} + r$ with subsets less than $2r$ levels below not included in the family. Without loss of generality we can say that $r \geq 1$, since otherwise, the statement is trivially true since there is no subset with smaller size. 
+Suppose we have a family $\F$ of size $s$ not satisfying this property. We define $\Phi = |\A| + r(m+1)$. We give a procedure by which $\F$ is modified so that it satisfies the desired properties, or $\Phi$ is decreased by at least 1. Since $\Phi \geq 0$, this procedure can be repeated to guarantee that eventually we have a family with the desired properties, which completes the proof.
 
-Let $l \leq 2r-1$ be the smallest integer such that there exists a maximal cardinality set $A$ with a corresponding subset $l$ levels below that is not in $\F$. We define
+Let $l \leq 2r-1$ be the smallest integer such that there exists a maximal cardinality set $A \in \F$ with a subset $l$ levels below that is not in $\F$. As in [Das], we define
 \begin{align*}
 \A &= \{A \in F| \lvert a \rvert = \frac{n}{2}+m, \partial^l A \not\subset \F \}\\
 \B &= \partial^l A - \F
 \end{align*}
-Let $\Phi = |\A| + r(m+1)$. We note that $\Phi \geq 0$. 
 
-This proof gives a procedure that either gives a family $\F$ that satisfies the desired properties, or decreases $\Phi$ by at least 1 (by decreasing $\A$ or $r$) without increasing the number of 2-chains. Since $\Phi \geq 0$, repeating the procedure guarantees taht eventaully we will have a family with the desired properties.
+We construct a bipartite graph $G$ on $\A \cup \B$ with an edge $(A,B)$ where $A \in \A$ and $B \in \B$ iff $B \subset A$.
 
-Construct a bipartite graph $G$ on $\A \cup \B$ with an edge $(A,B)$ iff $B \subset A$. Each edge corresponds to a pair of sets that make the lemma false.
+First, consider the case where there exists an injective mapping $M: \A \to \B$. We will show that shifting elements from $\A$ to their corresponding matched elements in $\B$ will shift the elements without increasing the number of 2-chains. Note that if $C \subset B$ for some $B \in \B$ is a 2-chain introduced by the shifting, then $C \subset B \subset A$, so there is no net change in the number of 2-chains. Therefore, it is sufficient to only consider 2-chains added and removed between the levels $\frac{n}{2} + r$ and $\frac{n}{2} + r - l$ (the levels of $\A$ and $\B$, respectively). We will refer to these 2-chains as \emph{intermediate} 2-chains.
 
-First, consider the case where there exists an injective mapping $M: \A \to \B$. We will show that shifting elements from $\A$ to their corresponding matches in $\B$ will shift the elements without increasing the number of 2-chains.
+Suppose $l > 1$. We will count the number of intermediate 2-chains that we lose and gain from the shifting process in order to show that we lose at least as many 2-chains as we gain.
 
-Note that if $C \subset B$ is a newly introduced 2-chain for some $B \in \B$, then $C \subset B \subset A$, so we have lost exactly one 2-chain as well. Therefore, it is sufficient to only consider 2-chains added and removed between the levels $\frac{n}{2} + r$ and $\frac{n}{2} + r - l$ (the levels of $\A$ and $\B$, respectively).
-
-Suppose $l > 1$. By the minimality of the choice of $l$, all the shadows from $\A$ that are less than $l$ must be in $\F$. That is $\partial^i A \subset \F$ for $1 \leq i < l -1$. We will count the number of intermediate 2-chains that we lose and gain in order to show that we lose more 2-chains that we gain.
-
-The number of intermediate 2-chains in $\F$ that we lose is
+Because of the minimality of $l$, note that all the $i$-shadows of $\A$ where $1 \leq i \leq l - 1$ must be contained in $\F$. Thus, the number of intermediate 2-chains in $\F$ that we lose is
 \[ \sum_{A \in \A}\sum_{i = 1}^{l-1} |\partial^i A | \]
-Also, any sets in the new shifted $\F$ with cardinality $\frac{n}{2} + r$ must have all their shadows up to $l$ in $\F$ (otherwise, they would have been in $\A$). So we only gain 2-chains from the levels $\frac{n}{2} + r - l$ to $\frac{n}{2} + r - 1$. The number of 2-chains that we gain is at most
+as there exists a 2-chain for every possible pairing of any member of any $i$-shadow of $\A$ (where $1 \leq i \leq l-1$) and any element of $\A$. 
+
+Also, any set in the newly shifted family with cardinality $\frac{n}{2} + r$ must be such that its i-shadows for $1 \leq i \leq l$ are contained in $\F$ (otherwise, this set would have been in $\A$). Thus, we only gain 2-chains from the levels $\frac{n}{2} + r - l$ to $\frac{n}{2} + r - 1$. Then the number of 2-chains that we gain is at most
 \[\sum_{A\in \A}\sum_{i = 1}^{l-1} |U^i(M(A)) \cap \F| \]
-Where $U^i(B)$ is the set of supersets of $B$ with $i$ more elements.
+
+%perhaps explain the above expression a bit more?
+
+It remains to prove the following Lemma.
 
 \begin{lemma} For any set $\F$ that does not satisfy the properties in Proposition~\ref{proposition1},
 \label{lemma1}
