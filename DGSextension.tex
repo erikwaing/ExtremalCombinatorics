@@ -146,7 +146,7 @@ The following proposition gives a way to transform a family of sets minimizing t
 \end{proposition}
 
 \begin{proof} 
-Suppose we have a family $\F$ of size $s$ not satisfying this property. We define $\Phi = |\A| + r(m+1)$. We give a procedure by which $\F$ is modified so that it satisfies the desired properties, or $\Phi$ is decreased by at least 1. Since $\Phi \geq 0$, this procedure can be repeated to guarantee that eventually we have a family with the desired properties, which completes the proof.
+Suppose we have a family $\F$ of size $s$ not satisfying this property. Define $\Phi = |\A| + r(m+1)$. We give a procedure by which $\F$ is modified so that it satisfies the desired properties, or $\Phi$ is decreased by at least 1. Since $\Phi \geq 0$, this procedure can be repeated to guarantee that eventually we have a family with the desired properties, which completes the proof.
 
 Let $l \leq 2r-1$ be the smallest integer such that there exists a maximal cardinality set $A \in \F$ with a subset $l$ levels below that is not in $\F$. As in [Das], we define
 \begin{align*}
@@ -210,9 +210,9 @@ Note that
 holds when $l \leq 2r-1$. The proof follows.
 \end{proof}
 
-Since we can shift the elements down, if we recompute $\Phi$ with this new shifted family, we have either decreased $r$ by at least 1 and increased $|\A|$ by at most $m$, which still decreases $\Phi$, or we have $r$ the same and decreased $|\A|$ by at least 1. 
+Thus, we can perform the shift without gaining any 2-chains. Consider the effect on $\Phi = |\A| + r(m+1)$. If every set in $\A$ has been shifted out for a set in $\B$, then $r$ has decreased by 1 and $\A$ has increased by at most $m$, the size of the maximum level. Otherwise, $r$ has stayed the same but $\A$ has decreased by at least 1. In either case, $\Phi$ decreases.
 
-This reduces the problem to the case where $l=1$. So we have at least one missing subset one level below $A$. If there was another set $D \subset A$ where $|D| = |M(A)|$ but $D \in \F$. Then we lose the 2-chain $D \subset A$ and gain no other 2-chains. So we might as well shift all the elements and assume that $\partial \A = \B$. 
+This leaves the $l = 1$ case. We have at least one missing subset one level below $A$. If there was another set $D \subset A$ where $|D| = |M(A)|$ but $D \in \F$. Then we lose the 2-chain $D \subset A$ and gain no other 2-chains. So we might as well shift all the elements and assume that $\partial \A = \B$. 
 
 So if we shift according to the injective map, we will not increase the number of 2-chains, since the only 2-chains relevant are those between levels of $\A$ and $\B$. If we added a 2-chain, then we had something in level $\frac{n}{2} + r$ that should have been included in $\A$ but was not.
 
