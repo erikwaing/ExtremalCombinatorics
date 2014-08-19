@@ -212,11 +212,17 @@ holds when $l \leq 2r-1$. The proof follows.
 
 Thus, we can perform the shift without gaining any 2-chains. Consider the effect on $\Phi = |\A| + r(m+1)$. If every set in $\A$ has been shifted out for a set in $\B$, then $r$ has decreased by 1 and $\A$ has increased by at most $m$, the size of the maximum level. Otherwise, $r$ has stayed the same but $\A$ has decreased by at least 1. In either case, $\Phi$ decreases.
 
-This leaves the $l = 1$ case. We have at least one missing subset one level below $A$. If there was another set $D \subset A$ where $|D| = |M(A)|$ but $D \in \F$. Then we lose the 2-chain $D \subset A$ and gain no other 2-chains. So we might as well shift all the elements and assume that $\partial \A = \B$. 
+This leaves the $l = 1$ case. 
+
+%%stopped editing here - fermi
+
+We have at least one missing subset one level below $A$. If there was another set $D \subset A$ where $|D| = |M(A)|$ but $D \in \F$. Then we lose the 2-chain $D \subset A$ and gain no other 2-chains. So we might as well shift all the elements and assume that $\partial \A = \B$. 
 
 So if we shift according to the injective map, we will not increase the number of 2-chains, since the only 2-chains relevant are those between levels of $\A$ and $\B$. If we added a 2-chain, then we had something in level $\frac{n}{2} + r$ that should have been included in $\A$ but was not.
 
-Similarly to the case where $l>1$, we can recompute $\Phi$ for this new family of sets and see that either we have decreased $r$ by 1 and increased $|\A|$ by at most $m$, or maintained $r$ and decreased $|\A|$ by at least 1. 
+%%started editing again here - fermi
+
+We can recompute $\Phi$ for this new family of sets and see that we have either decreased $r$ by 1 and increased $|\A|$ by at most $m$, or maintained $r$ and decreased $|\A|$ by at least 1. In both cases, $\Phi$ has been decreased by at least 1.
 
 \begin{comment}
 %
@@ -254,19 +260,23 @@ In the shifted set, we have lost the 2-chain $C \subset A$ and gained no interme
 Since $|\F|$ is greater than the middle level, we know that there is some 2-chain, suppose it is $C \subset D$. So we can additionally shift $D$ to some element in $\partial \A$. We know there is an available since $|\partial \A| > |\A|$ for $r \geq 1$. This is because each set $A \in \A$ has at least $\frac{n}{2}+r-1$ outgoing edges and each $B \in \partial \A$ has at most $\frac{n}{2}-r+1$ outgoing edges; similarly to before, $\dfrac{\frac{n}{2}+r-1}{\frac{n}{2}-r+1} > 1$ when $r \geq \frac{3}{2}$. 
 \end{comment}
 
-Now we assume that there is no injective map from $\A \rightarrow \B$.
+Now we assume there does not exist an injective map from $\A \rightarrow \B$.
 
-We use Lemma~\ref{lemma2}, and we claim that the auxiliary graph satisfies the conditions of the lemma with $U = \A, V = \B, \Delta_V = \dbinom{\frac{n}{2} - r + l}{l}$.
+We apply Lemma~\ref{lemma2} to the bipartite graph on $\A \cup \B$, as we satisfy the conditions of the lemma with $U = \A, V = \B, \Delta_V = \dbinom{\frac{n}{2} - r + l}{l}$.
 
-So we get subsets $\A_1 \subset \A$ and $\B_1 \subset \B$, along with $M:\A_1 \rightarrow \B_1$. We get $\tilde{\F}$ by shifting the elements from $\A_1$ to $\B_1$; since $M(A) \subset A$ (this is the same it says in Sudakov's paper), we only need to consider intermediate chains. Since $r \geq 1$, the same calculation from Lemma~\ref{lemma1} yields that we decrease the number of 2-chains. So we only need to consider the 2-chains destroyed and created between $\A$ and $\B$, or levels $\frac{n}{2} + r$ and $\frac{n}{2} + r - l$.
+The lemma produces $\A_1 \subset \A$, $\B_1 \subset \B$, and a matching $M:\A_1 \rightarrow \B_1$. We shift the elements from $\A_1$ to $B_1$, and since $M(A) \subset A$, we only need to consider intermediate 2-chains. Since $r \geq 1$, the same calculation used in the proof of Lemma~\ref{lemma1} shows that the number of 2-chains decreases. Thus, we only need to consider the 2-chains destroyed and created between $\A$ and $\B$, or levels $\frac{n}{2} + r$ and $\frac{n}{2} + r - l$.
 
-The number of 2-chains created is exactly $e(\A - \A_1, \B_1)$. Also, we lose the chains between $\A_1$ and $\partial^l\A_1 \cap \F = \partial^l\A_1 - \B$. We are losing at least
+%should we say instead that the number of 2-chains does not increase? in the paragraph above. Also should the sentence about only considering intermediate 2-chains be moved to the end of the paragraph? the last sentence is essentially saying that we're only considering intermediate 2-chains...
+
+The number of 2-chains created by the shifting is $e(\A - \A_1, \B_1)$. We lose the 2-chains between $\A_1$ and $\partial^l\A_1 \cap \F = \partial^l\A_1 - \B$, which is at least
 \[ |\A_1|\dbinom{\frac{n}{2}+r-1}{l} - e(\A_1, \B) \geq |\A_1|\dbinom{\frac{n}{2} - r + l}{l} - e(\A_1, \B) \geq e(\A - \A_1, \B_1) \] 
-So in fact, we can shift these down without gaining any more 2-chains.
+Therefore, we can perform the shift without a net gain in 2-chains.
 
-Thus again, we can recompute $\Phi$ and see that although $r$ remained the same, $|\A|$ decreased by at least 1. 
+If we compute $\Phi$, we see that although $r$ stayed the same, $|\A|$ has decreased by at least 1.
 \end{proof}
 
+
+%%stopped editing here - fermi 
 \begin{corollary}
 \label{cor1}
 There exists a family of $s > m$ subsets satisfying the properties in Proposition~\ref{proposition1} and is such that if $A \in \F$ is of minimal cardinality, where we write $|A|=\frac{n}{2}-r$, then for any $A \subset B$ with $|B| \leq \frac{n}{2}+r-1$, $B \in \F$
