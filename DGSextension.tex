@@ -217,13 +217,9 @@ We apply Lemma~\ref{lemma1} to $\A' = \A$ and $\B' = \B$, which shows that we ca
 
 This leaves the $l = 1$ case. 
 
-%%stopped editing here - fermi
-
 We have at least one missing subset one level below $A$. If there was another set $D \subset A$ where $|D| = |M(A)|$ but $D \in \F$. Then we lose the 2-chain $D \subset A$ and gain no other 2-chains. So we might as well shift all the elements and assume that $\partial \A = \B$. 
 
 So if we shift according to the injective map, we will not increase the number of 2-chains, since the only 2-chains relevant are those between levels of $\A$ and $\B$. If we added a 2-chain, then we had something in level $\frac{n}{2} + r$ that should have been included in $\A$ but was not.
-
-%%started editing again here - fermi
 
 We can recompute $\Phi$ for this new family of sets and see that we have either decreased $r$ by 1 and increased $|\A|$ by at most $m$, or maintained $r$ and decreased $|\A|$ by at least 1. In both cases, $\Phi$ has been decreased by at least 1.
 
@@ -267,9 +263,7 @@ Now we assume there does not exist an injective map from $\A \rightarrow \B$.
 
 We apply Lemma~\ref{lemma2} to the bipartite graph on $\A \cup \B$, as we satisfy the conditions of the lemma with $U = \A, V = \B, \Delta_V = \dbinom{\frac{n}{2} - r + l}{l}$.
 
-The lemma produces $\A_1 \subset \A$, $\B_1 \subset \B$, and a matching $M:\A_1 \rightarrow \B_1$. We shift the elements from $\A_1$ to $B_1$, and since $M(A) \subset A$, we only need to consider intermediate 2-chains. Since $r \geq 1$, Lemma~\ref{lemma1} applied to $A' = A_1$ and $B' = B_1$ shows that the number of 2-chains decreases. Thus, we only need to consider the 2-chains destroyed and created between $\A$ and $\B$, or levels $\frac{n}{2} + r$ and $\frac{n}{2} + r - l$.
-
-%should we say instead that the number of 2-chains does not increase? in the paragraph above. Also should the sentence about only considering intermediate 2-chains be moved to the end of the paragraph? the last sentence is essentially saying that we're only considering intermediate 2-chains...
+The lemma produces $\A_1 \subset \A$, $\B_1 \subset \B$, and a matching $M:\A_1 \rightarrow \B_1$, and we shift the elements from $\A_1$ to $B_1$. Since $r \geq 1$, Lemma~\ref{lemma1} applied to $A' = A_1$ and $B' = B_1$ shows that the number of 2-chains between the levels of $\A_1$ and $\B_1$ does not increase. Thus, we only need to consider the 2-chains destroyed and created between $\A$ and $\B$, or the levels $\frac{n}{2} + r$ and $\frac{n}{2} + r - l$.
 
 The number of 2-chains created by the shifting is $e(\A - \A_1, \B_1)$. We lose the 2-chains between $\A_1$ and $\partial^l\A_1 \cap \F = \partial^l\A_1 - \B$, which is at least
 \[ |\A_1|\dbinom{\frac{n}{2}+r-1}{l} - e(\A_1, \B) \geq |\A_1|\dbinom{\frac{n}{2} - r + l}{l} - e(\A_1, \B) \geq e(\A - \A_1, \B_1) \] 
@@ -288,27 +282,34 @@ There exists a family of $s > m$ subsets satisfying the properties in Propositio
 Once we have a family satisfying Proposition~\ref{proposition1}, we can take complements and apply the same transformation as in the proof of Proposition~\ref{proposition1}.
 \end{proof}
 
+% probably want to expand the proof of this corollary
+
 \begin{proposition}
 \label{proposition2}
-Suppose we have a family of sets satisfying the properties of Corollary~\ref{cor1} and with elements lying between levels $\frac{n}{2}\pm r$, then we can always move elements from the level $\frac{n}{2} \pm r$ into a middle level ($\frac{n}{2} + r - l$, where $1 \leq l \leq 2r-1$) without adding more 2-chains. 
+Suppose we have a family of sets satisfying the properties of Corollary~\ref{cor1} and whose elements lie between the levels $\frac{n}{2} + r$ and $\frac{n}{2} - r$. If there is an unfilled spot in any of the interior levels (a level of the form $\frac{n}{2} + r - l$ where $1 \leq l \leq 2r - 1$), then a set can be moved from the $\frac{n}{2} + r$ or $\frac{n}{2} - r$ without an increase in the number of 2-chains.
 \end{proposition}
 
 \begin{proof}
-Lets just shift an element from the $\frac{n}{2} + r$ level into a middle level and count the number of 2-chains added and subtracted. 
+Consider a set on the $\frac{n}{2} + r$ level and suppose it is moved to an interior level.
 
-By removing the top level element, we have removed at least
+When the element is removed, Proposition~\ref{proposition1} states that we lose at least
 \[ \sum_{i=1}^{2r-1} \left(\dbinom{\frac{n}{2} +r-1}{i} + \dbinom{\frac{n}{2} + r-2}{i-2}\right) \]
-and have added at most
+2-chains. The shift adds at most
 \[ \sum_{i=1}^{l-1}\dbinom{\frac{n}{2}-r + l}{i} + \sum_{i=1}^{2r-l} \dbinom{\frac{n}{2}+r-l}{i} \]
+2-chains.
+
 Note that we couldn't have added elements on top since by property 1, they were not included.
+%%What does this mean? What's property 1?
 
-We upper bound terms of the form $\binom{\frac{n}{2}+r-l}{i}$ with $\binom{\frac{n}{2}+r-1}{i}$, so the net total reduction in 2-chains is at least
-\[ \sum_{i=1}^{2r-1} \dbinom{\frac{n}{2}+r-2}{i-2} + \sum_{i=2r-l+1}^{2r-1} \dbinom{\frac{n}{2}+r-1}{i} - \sum_{i=1}^{l-1} \dbinom{\frac{n}{2}-r+l}{i}\]
-\[ \geq \sum_{i=1}^{l-1} \left(\dbinom{\frac{n}{2}+r-1}{2r-i} - \dbinom{\frac{n}{2}-r+l}{i}\right) \]
-\[ \geq \sum_{i=1}^{l-1} \left(\dbinom{\frac{n}{2}+r-1}{\frac{n}{2}-r-1+i} - \dbinom{\frac{n}{2}+r-1}{i}\right) \geq 0 \]
-To see this, it is easy to see that the sum of the first $l-1$ binomial coefficients will be at most the sum of the $l-1$ binomial coefficients starting at the $i$th coefficient.
+We upper bound terms of the form $\binom{\frac{n}{2}+r-l}{i}$ by $\binom{\frac{n}{2}+r-1}{i}$ to simplify the computation, so the net reduction in 2-chains is at least
+\begin{align*}
+&\sum_{i=1}^{2r-1} \dbinom{\frac{n}{2}+r-2}{i-2} + \sum_{i=2r-l+1}^{2r-1} \dbinom{\frac{n}{2}+r-1}{i} - \sum_{i=1}^{l-1} \dbinom{\frac{n}{2}-r+l}{i}\\
+& \geq \sum_{i=1}^{l-1} \left(\dbinom{\frac{n}{2}+r-1}{2r-i} - \dbinom{\frac{n}{2}-r+l}{i}\right) \\
+ &\geq  \sum_{i=1}^{l-1} \left(\dbinom{\frac{n}{2}+r-1}{\frac{n}{2}-r-1+i} - \dbinom{\frac{n}{2}+r-1}{i}\right) \geq 0
+\end{align*}
+The last inequality follows from the fact that the sum of the first $l-1$ binomial coefficients will be at most the sum of the $l-1$ binomial coefficients starting at the $i$th coefficient.
 
-Therefore, we can always move the elements from level $\frac{n}{2}+r$ to some missing spots in the middle without adding 2-chains. 
+Therefore, we can always move the elements from level $\frac{n}{2}+r$ to missing spots in the interior levels without adding 2-chains. A symmetric argument works for elements at level $\frac{n}{2} - r$.
 \end{proof}
 
 \begin{theorem} For any $s \geq m$, let $r \in \frac{1}{2}\mathbb{N}$ be the unique half-integer such that $\sum_{i = \frac{n}{2} - r +1}^{\frac{n}{2} + r -1} |P_i| < s \leq \sum_{i = \frac{n}{2}-r}^{\frac{n}{2}+r}|P_i|$. There exists a family of subsets $\F$ of $B_n / G_{(12)}$ with $|\F| = s$ minimizing the number of 2-chains satisfying the following properties:
