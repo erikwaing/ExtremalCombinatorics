@@ -55,23 +55,24 @@
 
 % if needed include a line break (\\) at an appropriate place in the title
 
-\title{\bf An Extension of a Result of Das-Gan-Sudakov}
+\title{\bf Minimizing 2-Chains for $B_n/G$}
 
 % input author, affilliation, address and support information as follows;
 % the address should include the country, and does not have to include
 % the street address 
 
-\author{Erik Waingarten\\
-\small Department of Mathematics\\[-0.8ex]
-\small Massachusetts Institute of Technology\\[-0.8ex] 
-\small Cambridge, MA\\
-\small\tt eaw@mit.edu\\
-\and
+\author{
 Fermi Ma\\
 \small Department of Mathematics\\[-0.8ex]
 \small Massachusetts Institute of Technology\\[-0.8ex]
 \small Cambridge, MA\\
-\small\tt fermima@mit.edu
+\small\tt fermima@mit.edu\\
+\and
+Erik Waingarten\\
+\small Department of Mathematics\\[-0.8ex]
+\small Massachusetts Institute of Technology\\[-0.8ex] 
+\small Cambridge, MA\\
+\small\tt eaw@mit.edu
 }
 
 % \date{\dateline{submission date}{acceptance date}\\
@@ -190,7 +191,7 @@ If we assume that both 1 and 2 are removed, there are $\binom{\frac{n}{2} + r - 
 Thus, the expression on the right-hand side is equal to
 \[ \sum_{\{A | \{1, 2\} \not\subset A, A \in \A\}} \sum_{i=1}^{l-1} \dbinom{\frac{n}{2} + r}{i} + \sum_{\{A | \{1, 2\} \not\subset A, A \in \A\}} \sum_{i=1}^{l-1} \left( \dbinom{\frac{n}{2}+r-1}{i} + \dbinom{\frac{n}{2}+r-2}{i-2}\right) \]
 
-The computation for the left-hand side is similar. We get an upper bound on the size of $|U^i(M(A)) \cap \F|$ by computing the the size of $U^i(M(A))$. We count ways to pick elements from $[n] \setminus M(A)$, the complement of $A$. Since each set in $M(A)$ has $\frac{n}{2} + r - l$ elements, the complement has $\frac{n}{2} - r + l$ elements. 
+The computation for the left-hand side is similar. We get an upper bound on the size of $|U^i(M(A)) \cap \F|$ by computing the the size of $U^i(M(A))$. We count ways to pick elements from $[n] \setminus M(A)$, the complement of $M(A)$. Since each set in $M(A)$ has $\frac{n}{2} + r - l$ elements, the complement has $\frac{n}{2} - r + l$ elements. 
 
 \textbf{Case 1:} At least one element of $\{1,2\}$ is in $M(A)$. Each way to select $i$ elements from the complement of $M(A)$ correpsonds to a distinct member of $U^i(M(A))$. Thus,
 \[ \sum_{i = 1}^{l-1} |U^i(M(A)) \cap \F| \leq \sum_{i=1}^{l-1}\binom{\frac{n}{2}-r+l}{i}\]
@@ -320,7 +321,7 @@ We prove this with induction on $s$.
 
 For the base case, $s = m$. If $n$ is even and $r = 0$, then $\F$ only has elements from the middle level and [Stanley] tells us that this is minimizing the number of 2-chains. If $n$ is odd and $r = \frac{1}{2}$, then $\F$ has elements from the middle two levels. Property 2 does not mean anything. [Stanley] tells us that these families minimize the number of 2-chains. 
 
-For the inductive step, take a family of sets $\F_0$ with $s-1$ elements that satisfies the properties and minimizes the number of 2-chains for $s-1$ elements. First, we analyze the case where the $\frac{n}{2}+r$ level is not full, so we add a set $F_0$ to the level $\frac{n}{2} + r$. Note that $\F_0 \cup \{F_0\}$ still satisfies properties 1 through 4.
+For the inductive step, take a family of sets $\F_0$ with $s-1$ elements that satisfies the properties and minimizes the number of 2-chains for $s-1$ elements. Without loss of generality, assume the $\frac{n}{2}+r$ level is not full, so we add a set $F_0$ to the level $\frac{n}{2} + r$. Note that $\F_0 \cup \{F_0\}$ still satisfies properties 1 and 2.
 
 We will assume that there exists a different family with fewer 2-chains and show that if one of the properties is broken, there isn't less 2-chains than in $\F_0 \cup \{ F_0\}$. Therefore, this will show that there exists a family of sets which satisfies the above properties and minimzes the number of 2-chains.
 
@@ -336,12 +337,18 @@ Now suppose a family $\F$ of $s > m$ sets satisfying the conditions of Propostio
 Then from Proposition~\ref{proposition1}, we know that every $G \subset F$, where $|G| \geq \frac{n}{2}-t+1$, we have $G \in \F$. So $F$ is involved in at least
 \[ \sum_{i=1}^{2t-1} \dbinom{\frac{n}{2}+t - 1}{i} + \dbinom{\frac{n}{2}+t-2}{i-2}\]
 2-chains. So there are at least $c_2(n, s-1) + \sum_{i=1}^{2t-1} \dbinom{\frac{n}{2}+t - 1}{i} + \dbinom{\frac{n}{2}+t-2}{i-2}$ 2-chains in $\F$, but since we assumed that $\F_0$ was optimal for $s-1$ elements, we know that $\F_0 \cup \{F_0\}$ has at most
-\[ c_2(n, s-1) + \sum_{i=1}^{2r-1} \dbinom{\frac{n}{2}+r - 1}{i} + \dbinom{\frac{n}{2}+r-2}{i-2} \]
-2-chains since the $\frac{n}{2}-r$ level is empty and we are dealing with Case 1. Since $t > r$, we know that $\F$ has more 2-chains than $\F_0$, which means that $\F$ must satisfy Property 1.
+\[ c_2(n, s-1) + \sum_{i=1}^{2r} \dbinom{\frac{n}{2}+r - 1}{i} + \dbinom{\frac{n}{2}+r-2}{i-2} \]
+Since $t > r$,we know that $\F$ has more 2-chains than $\F_0$, which means that $\F$ must satisfy Property 1.
 
+\begin{comment}
+%
+%   We can just use proposition 5 for property 2 in both cases.
+%
+%
 So now suppose $\F$ satisfies property 1 but not property 2. Then in light of property 1, we know that $\F$ has some element in level $\frac{n}{2} \pm r$, and again by symmetry, we can assume that it is in level $\frac{n}{2} + r$ by taking complements. Therefore, we know that $\F$ is involved in at least 
 \[ c_2(n, s-1) + \sum_{i=1}^{2r-1} \dbinom{\frac{n}{2}+r - 1}{i} + \dbinom{\frac{n}{2}+r-2}{i-2} \]
 and thus doesn't have less 2-chains. 
+\end{comment}
 
 Now we can analyze Case 2, where $\{ 1, 2\} \not\subset F_0$. In this case, if we have family $\F$ with less 2-chains which broke property 1, we would have an element with a set in a level $t > r$ and so $\F$ would have at least
 \[ c_2(n, s-1) + \sum_{i=1}^{2t-1} \dbinom{\frac{n}{2}+t-1}{i} + \dbinom{\frac{n}{2}+t-2}{i-2} \]
