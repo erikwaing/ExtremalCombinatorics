@@ -147,7 +147,7 @@ The following proposition gives a way to transform a family of sets minimizing t
 \end{proposition}
 
 \begin{proof} 
-Suppose we have a family $\F$ of size $s$ not satisfying this property. We define $\Phi = |\A| + r(m+1)$. We give a procedure by which $\F$ is modified so that it satisfies the desired properties, or $\Phi$ is decreased by at least 1. Since $\Phi \geq 0$, this procedure can be repeated to guarantee that eventually we have a family with the desired properties, which completes the proof.
+Suppose we have a family $\F$ of size $s$ not satisfying this property. Define $\Phi = |\A| + r(m+1)$. We give a procedure by which $\F$ is modified so that it satisfies the desired properties, or $\Phi$ is decreased by at least 1. Since $\Phi \geq 0$, this procedure can be repeated to guarantee that eventually we have a family with the desired properties, which completes the proof.
 
 Let $l \leq 2r-1$ be the smallest integer such that there exists a maximal cardinality set $A \in \F$ with a subset $l$ levels below that is not in $\F$. As in [Das], we define
 \begin{align*}
@@ -172,35 +172,48 @@ Also, any set in the newly shifted family with cardinality $\frac{n}{2} + r$ mus
 
 It remains to prove the following Lemma.
 
-\begin{lemma} For any set $\F$ that does not satisfy the properties in Proposition~\ref{proposition1},
+\begin{lemma} For any set $\F$ that does not satisfy the properties in Proposition~\ref{proposition1} and is such that there exists an injective matching $M$ from $\A$ to $\B$,
 \label{lemma1}
 \[ \sum_{A\in \A}\sum_{i = 1}^{l-1} |U^i(M(A)) \cap \F| \leq \sum_{A \in \A}\sum_{i = 1}^{l-1} |\partial^i A | \]
 when $l \leq 2r-1$
 \end{lemma}
 
-\begin{proof} Let $L$ be the expression on the left-hand side, and let $R$ be the expression on the right-hand side. 
+\begin{proof} We first compute $\sum_{A \in \A}\sum_{i = 1}^{l-1} |\partial^i A |$ by considering two cases for $A$.
 
-We first compute $R$ by spliting up $A$ in 2 cases or the number of 2-chains lost:\\
-1. $\{ 1, 2 \} \not\subset A$. In this case, whatever we chose to remove will get us a subset of $A$ that is below it. So the number of 2-chains lost involving this kind of $A$ is
-\[ \sum_{i=1}^{l-1} \dbinom{\frac{n}{2} + r}{i} \]
-2. $\{ 1, 2 \} \subset A$. In this case, it doesn't matter whether we remove $1$ or $2$, so we count the number of sets in the following manner. First, we assume that we remove either 1 or 2 or none. In the other case, we remove 1 and 2.
-\[ \sum_{i=1}^{l-1} \left(\dbinom{\frac{n}{2} + r - 1}{i} + \dbinom{\frac{n}{2}+r-2}{i-2} \right) \]
-So we have computed $R$ to be the sum over all $A \in \A$:
-\[ R = \sum_{\{1, 2\} \not\subset A \in \A} \sum_{i=1}^{l-1} \dbinom{\frac{n}{2} + r}{i} + \sum_{\{1, 2\} \subset A \in \A} \sum_{i=1}^{l-1} \left( \dbinom{\frac{n}{2}+r-1}{i} + \dbinom{\frac{n}{2}+r-2}{i-2}\right) \]
+\textbf{Case 1:} $\{1,2\} \not\subset A$. In this case, each way to select $i$ elements from $A$ corresponds to a distinct member of $\partial^i A$. Thus,
+\[ \sum_{i=1}^{l-1} |\partial^i A| = \sum_{i=1}^{l-1}\binom{\frac{n}{2}+r}{i} \]
 
-Likewise, we can do the same for $L$, except now we are adding elements from the complements of $M(A)$. We can also assume that everything that we add is in $\F$ in the worst case
-\[ L \leq \sum_{1 \in M(A) \text{ or } 2 \in M(A)} \sum_{i=1}^{l-1} \dbinom{\frac{n}{2}-r+l}{i} + \sum_{1, 2 \notin M(A)} \sum_{i=1}^{l-1} \left( \dbinom{\frac{n}{2}-r+l-1}{i} + \dbinom{\frac{n}{2}-r+l-2}{i-2} \right) \]
+\textbf{Case 2:} $\{1,2\} \subset A$. This case is different because removing 1 from $A$ gives the same set as removing 2 from $A$. As before, we count the number of ways to select elements to remove so that we count all members of $\partial^i A$.
 
-We know that $\dbinom{l}{k} > \dbinom{l-1}{k} + \dbinom{l-2}{k-2}$, so in order to show that 
-\[ L \leq R \]
-it sufficies to show that
+If we assume that both 1 and 2 are removed, there are $\binom{\frac{n}{2} + r - 2}{i-2}$ ways to pick the other $i-2$ elements. Otherwise, there are $\binom{\frac{n}{2}+r-1}{i}$ ways to pick the $i$ elements to remove, where the $\frac{n}{2} + r - 1$ comes from the fact that selecting 1 is the same as selecting 2. Thus, 
+\[ \sum_{i=1}^{l-1} |\partial^i A| = \sum_{i=1}^{l-1} \left( \dbinom{\frac{n}{2}+r-2}{i-2} + \dbinom{\frac{n}{2} + r - 1}{i}\right)\]
+
+Thus, the expression on the right-hand side is equal to
+\[ \sum_{\{A | \{1, 2\} \not\subset A, A \in \A\}} \sum_{i=1}^{l-1} \dbinom{\frac{n}{2} + r}{i} + \sum_{\{A | \{1, 2\} \not\subset A, A \in \A\}} \sum_{i=1}^{l-1} \left( \dbinom{\frac{n}{2}+r-1}{i} + \dbinom{\frac{n}{2}+r-2}{i-2}\right) \]
+
+The computation for the left-hand side is similar. We get an upper bound on the size of $|U^i(M(A)) \cap \F|$ by computing the the size of $U^i(M(A))$. We count ways to pick elements from $[n] \setminus M(A)$, the complement of $A$. Since each set in $M(A)$ has $\frac{n}{2} + r - l$ elements, the complement has $\frac{n}{2} - r + l$ elements. 
+
+\textbf{Case 1:} At least one element of $\{1,2\}$ is in $M(A)$. Each way to select $i$ elements from the complement of $M(A)$ correpsonds to a distinct member of $U^i(M(A))$. Thus,
+\[ \sum_{i = 1}^{l-1} |U^i(M(A)) \cap \F| \leq \sum_{i=1}^{l-1}\binom{\frac{n}{2}-r+l}{i}\]
+
+\textbf{Case 2:} Neither 1 nor 2 are in $M(A)$. If we assume that both 1 and 2 are added, then there are $\binom{\frac{n}{2}-r + l - 2}{i -2}$ ways to pick the other $i - 2$ elements to add. Otherwise, there are $\binom{\frac{n}{2} - r + l - 1}{i}$ways to pick the $i$ elements to add.
+
+Thus, the expression on the left-hand side is bounded above by
+\[ \sum_{\{M(A) | 1 \in M(A) \text{ or } 2 \in M(A)\}} \sum_{i=1}^{l-1} \dbinom{\frac{n}{2}-r+l}{i} + \sum_{\{M(A) | 1, 2 \not\in M(A)\}} \sum_{i=1}^{l-1} \left( \dbinom{\frac{n}{2}-r+l-1}{i} + \dbinom{\frac{n}{2}-r+l-2}{i-2} \right) \]
+
+If we use the fact that $\dbinom{l}{k} > \dbinom{l-1}{k} + \dbinom{l-2}{k-2}$, the left-hand side is bounded above by
+\[ |M|\sum_{i=1}^{l-1} \binom{\frac{n}{2}-r+l}{i}\]
+where $|M|$ is the size of the matching.
+The right-hand side is bounded below by
+\[ |M| \sum_{i=1}^{l-1}\left(\binom{\frac{n}{2} + r - 1}{i} + \binom{\frac{n}{2}+r-2}{i-2}\right)\]
+Note that
 \[ \dbinom{\frac{n}{2}-r+l}{i} \leq \dbinom{\frac{n}{2}+r-1}{i} + \dbinom{\frac{n}{2}+r-2}{i-2} \]
-Which is true, since $l \leq 2r-1$.
+holds when $l \leq 2r-1$. The proof follows.
 \end{proof}
 
-Since we can shift the elements down, if we recompute $\Phi$ with this new shifted family, we have either decreased $r$ by at least 1 and increased $|\A|$ by at most $m$, which still decreases $\Phi$, or we have $r$ the same and decreased $|\A|$ by at least 1. 
+Thus, we can perform the shift without gaining any 2-chains. Consider the effect on $\Phi = |\A| + r(m+1)$. If every set in $\A$ has been shifted out for a set in $\B$, then $r$ has decreased by 1 and $\A$ has increased by at most $m$, the size of the maximum level. Otherwise, $r$ has stayed the same but $\A$ has decreased by at least 1. In either case, $\Phi$ decreases.
 
-This reduces the problem to the case where $l=1$. So we have at least one missing subset one level below $A$. If there was another set $D \subset A$ where $|D| = |M(A)|$ but $D \in \F$. Then we lose the 2-chain $D \subset A$ and gain no other 2-chains. So we might as well shift all the elements and assume that $\partial \A = \B$. 
+This leaves the $l = 1$ case. We have at least one missing subset one level below $A$. If there was another set $D \subset A$ where $|D| = |M(A)|$ but $D \in \F$. Then we lose the 2-chain $D \subset A$ and gain no other 2-chains. So we might as well shift all the elements and assume that $\partial \A = \B$. 
 
 So if we shift according to the injective map, we will not increase the number of 2-chains, since the only 2-chains relevant are those between levels of $\A$ and $\B$. If we added a 2-chain, then we had something in level $\frac{n}{2} + r$ that should have been included in $\A$ but was not.
 
