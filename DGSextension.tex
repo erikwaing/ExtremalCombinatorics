@@ -191,7 +191,7 @@ If we assume that both 1 and 2 are removed, there are $\binom{\frac{n}{2} + r - 
 Thus, the expression on the right-hand side is equal to
 \[ \sum_{\{A | \{1, 2\} \not\subset A, A \in \A\}} \sum_{i=1}^{l-1} \dbinom{\frac{n}{2} + r}{i} + \sum_{\{A | \{1, 2\} \not\subset A, A \in \A\}} \sum_{i=1}^{l-1} \left( \dbinom{\frac{n}{2}+r-1}{i} + \dbinom{\frac{n}{2}+r-2}{i-2}\right) \]
 
-The computation for the left-hand side is similar. We get an upper bound on the size of $|U^i(M(A)) \cap \F|$ by computing the the size of $U^i(M(A))$. We count ways to pick elements from $[n] \setminus M(A)$, the complement of $A$. Since each set in $M(A)$ has $\frac{n}{2} + r - l$ elements, the complement has $\frac{n}{2} - r + l$ elements. 
+The computation for the left-hand side is similar. We get an upper bound on the size of $|U^i(M(A)) \cap \F|$ by computing the the size of $U^i(M(A))$. We count ways to pick elements from $[n] \setminus M(A)$, the complement of $M(A)$. Since each set in $M(A)$ has $\frac{n}{2} + r - l$ elements, the complement has $\frac{n}{2} - r + l$ elements. 
 
 \textbf{Case 1:} At least one element of $\{1,2\}$ is in $M(A)$. Each way to select $i$ elements from the complement of $M(A)$ correpsonds to a distinct member of $U^i(M(A))$. Thus,
 \[ \sum_{i = 1}^{l-1} |U^i(M(A)) \cap \F| \leq \sum_{i=1}^{l-1}\binom{\frac{n}{2}-r+l}{i}\]
