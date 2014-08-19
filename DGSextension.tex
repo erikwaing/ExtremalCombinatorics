@@ -147,13 +147,15 @@ The following proposition gives a way to transform a family of sets minimizing t
 \end{proposition}
 
 \begin{proof} 
-Suppose we have a family $\F$ of size $s$ not satisfying this property. Define $\Phi = |\A| + r(m+1)$. We give a procedure by which $\F$ is modified so that it satisfies the desired properties, or $\Phi$ is decreased by at least 1. Since $\Phi \geq 0$, this procedure can be repeated to guarantee that eventually we have a family with the desired properties, which completes the proof.
+Suppose we have a family $\F$ of size $s$ not satisfying this property.
 
 Let $l \leq 2r-1$ be the smallest integer such that there exists a maximal cardinality set $A \in \F$ with a subset $l$ levels below that is not in $\F$. As in [Das], we define
 \begin{align*}
 \A &= \{A \in F| \lvert a \rvert = \frac{n}{2}+m, \partial^l A \not\subset \F \}\\
 \B &= \partial^l A - \F
 \end{align*}
+
+Define $\Phi = |\A| + r(m+1)$. We give a procedure by which $\F$ is modified so that it satisfies the desired properties, or $\Phi$ is decreased by at least 1. Since $\Phi \geq 0$, this procedure can be repeated to guarantee that eventually we have a family with the desired properties, which completes the proof.
 
 We construct a bipartite graph $G$ on $\A \cup \B$ with an edge $(A,B)$ where $A \in \A$ and $B \in \B$ iff $B \subset A$.
 
@@ -172,9 +174,9 @@ Also, any set in the newly shifted family with cardinality $\frac{n}{2} + r$ mus
 
 It remains to prove the following Lemma.
 
-\begin{lemma} For any set $\F$ that does not satisfy the properties in Proposition~\ref{proposition1} and is such that there exists an injective matching $M$ from $\A$ to $\B$,
+\begin{lemma} For any set $\F$ that does not satisfy the properties in Proposition~\ref{proposition1}, and is such that there exists an injective matching $M$ from $\A'$ to $\B'$, where $\A'$ and $\B'$ are nonempty subsets of $\A$ and $\B$, respectively, 
 \label{lemma1}
-\[ \sum_{A\in \A}\sum_{i = 1}^{l-1} |U^i(M(A)) \cap \F| \leq \sum_{A \in \A}\sum_{i = 1}^{l-1} |\partial^i A | \]
+\[ \sum_{A\in \A'}\sum_{i = 1}^{l-1} |U^i(M(A)) \cap \F| \leq \sum_{A \in \A'}\sum_{i = 1}^{l-1} |\partial^i A | \]
 when $l \leq 2r-1$
 \end{lemma}
 
@@ -202,16 +204,16 @@ Thus, the expression on the left-hand side is bounded above by
 \[ \sum_{\{M(A) | 1 \in M(A) \text{ or } 2 \in M(A)\}} \sum_{i=1}^{l-1} \dbinom{\frac{n}{2}-r+l}{i} + \sum_{\{M(A) | 1, 2 \not\in M(A)\}} \sum_{i=1}^{l-1} \left( \dbinom{\frac{n}{2}-r+l-1}{i} + \dbinom{\frac{n}{2}-r+l-2}{i-2} \right) \]
 
 If we use the fact that $\dbinom{l}{k} > \dbinom{l-1}{k} + \dbinom{l-2}{k-2}$, the left-hand side is bounded above by
-\[ |M|\sum_{i=1}^{l-1} \binom{\frac{n}{2}-r+l}{i}\]
+\[ |\A'|\sum_{i=1}^{l-1} \binom{\frac{n}{2}-r+l}{i}\]
 where $|M|$ is the size of the matching.
 The right-hand side is bounded below by
-\[ |M| \sum_{i=1}^{l-1}\left(\binom{\frac{n}{2} + r - 1}{i} + \binom{\frac{n}{2}+r-2}{i-2}\right)\]
+\[ |\A'| \sum_{i=1}^{l-1}\left(\binom{\frac{n}{2} + r - 1}{i} + \binom{\frac{n}{2}+r-2}{i-2}\right)\]
 Note that
 \[ \dbinom{\frac{n}{2}-r+l}{i} \leq \dbinom{\frac{n}{2}+r-1}{i} + \dbinom{\frac{n}{2}+r-2}{i-2} \]
 holds when $l \leq 2r-1$. The proof follows.
 \end{proof}
 
-Thus, we can perform the shift without gaining any 2-chains. Consider the effect on $\Phi = |\A| + r(m+1)$. If every set in $\A$ has been shifted out for a set in $\B$, then $r$ has decreased by 1 and $\A$ has increased by at most $m$, the size of the maximum level. Otherwise, $r$ has stayed the same but $\A$ has decreased by at least 1. In either case, $\Phi$ decreases.
+We apply Lemma~\ref{lemma1} to $\A' = \A$ and $\B' = \B$, which shows that we can perform the shift without gaining any 2-chains. Consider the effect on $\Phi = |\A| + r(m+1)$. If every set in $\A$ has been shifted out for a set in $\B$, then $r$ has decreased by 1 and $\A$ has increased by at most $m$, the size of the maximum level. Otherwise, $r$ has stayed the same but $\A$ has decreased by at least 1. In either case, $\Phi$ decreases.
 
 This leaves the $l = 1$ case. 
 
@@ -265,7 +267,7 @@ Now we assume there does not exist an injective map from $\A \rightarrow \B$.
 
 We apply Lemma~\ref{lemma2} to the bipartite graph on $\A \cup \B$, as we satisfy the conditions of the lemma with $U = \A, V = \B, \Delta_V = \dbinom{\frac{n}{2} - r + l}{l}$.
 
-The lemma produces $\A_1 \subset \A$, $\B_1 \subset \B$, and a matching $M:\A_1 \rightarrow \B_1$. We shift the elements from $\A_1$ to $B_1$, and since $M(A) \subset A$, we only need to consider intermediate 2-chains. Since $r \geq 1$, the same calculation used in the proof of Lemma~\ref{lemma1} shows that the number of 2-chains decreases. Thus, we only need to consider the 2-chains destroyed and created between $\A$ and $\B$, or levels $\frac{n}{2} + r$ and $\frac{n}{2} + r - l$.
+The lemma produces $\A_1 \subset \A$, $\B_1 \subset \B$, and a matching $M:\A_1 \rightarrow \B_1$. We shift the elements from $\A_1$ to $B_1$, and since $M(A) \subset A$, we only need to consider intermediate 2-chains. Since $r \geq 1$, Lemma~\ref{lemma1} applied to $A' = A_1$ and $B' = B_1$ shows that the number of 2-chains decreases. Thus, we only need to consider the 2-chains destroyed and created between $\A$ and $\B$, or levels $\frac{n}{2} + r$ and $\frac{n}{2} + r - l$.
 
 %should we say instead that the number of 2-chains does not increase? in the paragraph above. Also should the sentence about only considering intermediate 2-chains be moved to the end of the paragraph? the last sentence is essentially saying that we're only considering intermediate 2-chains...
 
