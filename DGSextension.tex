@@ -320,26 +320,24 @@ Therefore, we can always move the elements from level $\frac{n}{2}+r$ to missing
 \begin{proof}
 We prove this with induction on $s$.
 
-For the base case, $s = m$. If $n$ is even and $r = 0$, then $\F$ only has elements from the middle level and [Stanley] tells us that this is minimizing the number of 2-chains. If $n$ is odd and $r = \frac{1}{2}$, then $\F$ has elements from the middle two levels. Property 2 does not mean anything. [Stanley] tells us that these families minimize the number of 2-chains. 
+For the base case, $s = m$. If $n$ is even, then $r = 0$ and let $\F$ consist solely of elements from the middle level. This minimizes the number of 2-chains and satisfies both properties [Stanley]. If $n$ is odd, then $r = \frac{1}{2}$ and let $\F$ consist of all the elements on one of the two middle levels. Again, this minimizes the number of 2-chains and satisfies both properties [Stanley].
 
-For the inductive step, take a family of sets $\F_0$ with $s-1$ elements that satisfies the properties and minimizes the number of 2-chains for $s-1$ elements. Without loss of generality, assume the $\frac{n}{2}+r$ level is not full, so we add a set $F_0$ to the level $\frac{n}{2} + r$. Note that $\F_0 \cup \{F_0\}$ still satisfies properties 1 and 2.
+For the inductive step, consider a family of sets $\F_0$ with $s-1$ elements that satisfies both properties and minimizes the number of 2-chains. Without loss of generality, assume the $\frac{n}{2}+r$ level is not fully occupied. We add a set $S$ with $|\frac{n}{2} + r|$ elements, and we note that $\F_0 \cup \{S\}$ still satisfies both properties.
 
-We will assume that there exists a different family with fewer 2-chains and show that if one of the properties is broken, there isn't less 2-chains than in $\F_0 \cup \{ F_0\}$. Therefore, this will show that there exists a family of sets which satisfies the above properties and minimzes the number of 2-chains.
+It remains to show that $\F_0 \cup \{S\}$ has (weakly) fewer 2-chains than any family of size $s$ that does not satisfy both properties.
 
-We separate the claim into two cases:
+We separate the claim into two cases.
 
-\begin{itemize}
-\item Case 1: $\{1, 2\} \subset F_0$.
-\item Case 2: $\{ 1, 2\} \not\subset F_0$.
-\end{itemize}
+\textbf{Case 1:} $\{1, 2\} \subset F_0$.
 
-Now suppose a family $\F$ of $s > m$ sets satisfying the conditions of Propostion~\ref{proposition1} has fewer 2-chains than $\F_0 \cup \{F_0\}$. Suppose this family does not satisfy Property 1. Since $\F$ and $\F' = \{ [n] - F | F \in \F \}$ are involved in the same number of 2-chains, we can assume that the largest element $F \in \F$ has $|F| = \frac{n}{2} + t$ where $t > r$. 
+Suppose for the sake of contradiction that a family $\F$ of $s$ sets satisfying the conditions of Propostion~\ref{proposition1} has strictly fewer 2-chains than $\F_0 \cup \{S\}$, and does not satisfy Property 1. Since $\F$ and $\F' = \{ [n] - F | F \in \F \}$ contain the same number of 2-chains, we can assume that the largest element $F \in \F$ has $|F| = \frac{n}{2} + t$ where $t > r$. 
 
-Then from Proposition~\ref{proposition1}, we know that every $G \subset F$, where $|G| \geq \frac{n}{2}-t+1$, we have $G \in \F$. So $F$ is involved in at least
+Then from Proposition~\ref{proposition1}, we know that for every $G \subset F$ where $|G| \geq \frac{n}{2}-t+1$, we have $G \in \F$. So $F$ is involved in at least
 \[ \sum_{i=1}^{2t-1} \dbinom{\frac{n}{2}+t - 1}{i} + \dbinom{\frac{n}{2}+t-2}{i-2}\]
-2-chains. So there are at least $c_2(n, s-1) + \sum_{i=1}^{2t-1} \dbinom{\frac{n}{2}+t - 1}{i} + \dbinom{\frac{n}{2}+t-2}{i-2}$ 2-chains in $\F$, but since we assumed that $\F_0$ was optimal for $s-1$ elements, we know that $\F_0 \cup \{F_0\}$ has at most
+2-chains. So there are at least $c_2(n, s-1) + \sum_{i=1}^{2t-1} \dbinom{\frac{n}{2}+t - 1}{i} + \dbinom{\frac{n}{2}+t-2}{i-2}$ 2-chains in $\F$, but since we assumed that $\F_0$ was optimal for $s-1$ elements, we know that $\F_0 \cup \{S\}$ has at most
 \[ c_2(n, s-1) + \sum_{i=1}^{2r} \dbinom{\frac{n}{2}+r - 1}{i} + \dbinom{\frac{n}{2}+r-2}{i-2} \]
-Since $t > r$,we know that $\F$ has more 2-chains than $\F_0$, which means that $\F$ must satisfy Property 1.
+2-chains.
+Since $t > r$, we know that $\F$ has more 2-chains than $\F_0 \cup \{S\}$, which is a contradiction.
 
 \begin{comment}
 %
@@ -351,13 +349,16 @@ So now suppose $\F$ satisfies property 1 but not property 2. Then in light of pr
 and thus doesn't have less 2-chains. 
 \end{comment}
 
-Now we can analyze Case 2, where $\{ 1, 2\} \not\subset F_0$. In this case, if we have family $\F$ with less 2-chains which broke property 1, we would have an element with a set in a level $t > r$ and so $\F$ would have at least
+\textbf{Case 2:} $\{ 1, 2\} \not\subset F_0$.
+
+Suppose for the sake of contradiction that we have a family $\F$ with strictly fewer 2-chains than $\F_0 \cup \{S\}$ which violates property 1. Using the same set-up as in Case 1, we have a set in a level $t > r$ and so $\F$ would have at least
 \[ c_2(n, s-1) + \sum_{i=1}^{2t-1} \dbinom{\frac{n}{2}+t-1}{i} + \dbinom{\frac{n}{2}+t-2}{i-2} \]
+2-chains.
 But we know that $\F_0 \cup \{ F_0\}$ has at most
 \[ c_2(n,s-1) + \sum_{i=1}^{2r} \dbinom{\frac{n}{2}+r}{i} \]
-which is not more than the number of 2-chains in $\F$ since $t \geq r + 1$. So we get Property 1 in this Case 2 as well. 
+2-chains, which is not more than the number of 2-chains in $\F$ since $t \geq r + 1$. This is a contradiction.
 
-Suppose $\F$ satisfied property 1 but not property 2, then we know that there is an element in level $\frac{n}{2} \pm r$ and an element missing inside in level $\frac{n}{2}+r-l$. We can move the elements down via Proposition~\ref{proposition2}. This gives us property 2. 
+Suppose $\F$ satisfies property 1 but not property 2. Then we know that there is an element in level $\frac{n}{2} \pm r$ and an element missing inside in level $\frac{n}{2}+r-l$. We can move the elements down via Proposition~\ref{proposition2}. This gives property 2. 
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
